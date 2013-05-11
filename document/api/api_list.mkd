@@ -1,0 +1,17 @@
+# API列表 #
+本文中奖列出所有的API列表及其基本作用
+
+## 账户 ##
+* user/login [username&password]
+* user/logout
+* user/get_info
+
+## 游戏 ##
+* game/get_info [id]
+
+## 商店 ##
+* shop/get_list
+* shop/buy_game [id]
+
+## 仓库 ##
+* repo/get_all
