@@ -2210,3 +2210,39 @@ Stack trace:
 #21 {main}
 REQUEST_URI=/stage/index.php/repo/api?action=get_status&game_id=1
 ---
+2013/05/11 20:21:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Action not found: japiIndex' in /home/hyf042/www/stage/protected/components/JApi.php:40
+Stack trace:
+#0 /home/hyf042/www/yii/framework/web/actions/CAction.php(76): JApi->run()
+#1 /home/hyf042/www/yii/framework/web/CController.php(308): CAction->runWithParams(Array)
+#2 /home/hyf042/www/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(JApi))
+#3 /home/hyf042/www/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/hyf042/www/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 /home/hyf042/www/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 /home/hyf042/www/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /home/hyf042/www/yii/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/hyf042/www/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(JApi), Array)
+#9 /home/hyf042/www/yii/framework/web/CWebApplication.php(282): CController->run('api')
+#10 /home/hyf042/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('shop/api/action...')
+#11 /home/hyf042/www/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#12 /home/hyf042/www/stage/index.php(13): CApplication->run()
+#13 {main}
+REQUEST_URI=/stage/shop/api/action=get_all
+---
+2013/05/11 20:21:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Action not found: japiIndex' in /home/hyf042/www/stage/protected/components/JApi.php:40
+Stack trace:
+#0 /home/hyf042/www/yii/framework/web/actions/CAction.php(76): JApi->run()
+#1 /home/hyf042/www/yii/framework/web/CController.php(308): CAction->runWithParams(Array)
+#2 /home/hyf042/www/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(JApi))
+#3 /home/hyf042/www/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/hyf042/www/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 /home/hyf042/www/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 /home/hyf042/www/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /home/hyf042/www/yii/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/hyf042/www/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(JApi), Array)
+#9 /home/hyf042/www/yii/framework/web/CWebApplication.php(282): CController->run('api')
+#10 /home/hyf042/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('shop/api/action...')
+#11 /home/hyf042/www/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#12 /home/hyf042/www/stage/index.php(13): CApplication->run()
+#13 {main}
+REQUEST_URI=/stage/shop/api/action=get_all
+---
