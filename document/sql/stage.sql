@@ -1,111 +1,164 @@
-/*==============================================================*/
-/* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2013/5/11 14:56:51                           */
-/*==============================================================*/
+-- phpMyAdmin SQL Dump
+-- version 3.4.10.1deb1
+-- http://www.phpmyadmin.net
+--
+-- 主机: localhost
+-- 生成日期: 2013 年 05 月 11 日 20:11
+-- 服务器版本: 5.5.31
+-- PHP 版本: 5.3.10-1ubuntu3.6
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
-drop table if exists sta_Comment;
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
 
-drop table if exists sta_Game;
+--
+-- 数据库: `stage`
+--
 
-drop table if exists sta_UnderVerifiedGame;
+-- --------------------------------------------------------
 
-drop table if exists sta_UserAndGame;
+--
+-- 表的结构 `sta_Comment`
+--
 
-drop table if exists sta_user;
+CREATE TABLE IF NOT EXISTS `sta_Comment` (
+  `comment_id` int(11) NOT NULL AUTO_INCREMENT,
+  `game_id` int(11) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `content` varchar(1024) DEFAULT NULL,
+  `status` int(11) NOT NULL,
+  PRIMARY KEY (`comment_id`),
+  KEY `FK_HasCommemt` (`game_id`),
+  KEY `FK_OwnComment` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
-/*==============================================================*/
-/* Table: sta_Comment                                           */
-/*==============================================================*/
-create table sta_Comment
-(
-   comment_id           int not null auto_increment,
-   game_id              int,
-   user_id              int,
-   content              varchar(1024),
-   status               int not null,
-   primary key (comment_id)
-)
-engine = InnoDB charset = UTF8;
+-- --------------------------------------------------------
 
-/*==============================================================*/
-/* Table: sta_Game                                              */
-/*==============================================================*/
-create table sta_Game
-(
-   game_id              int not null auto_increment,
-   user_id              int,
-   name                 varchar(128) not null,
-   alias                varchar(128),
-   price                double,
-   deploy_url           varchar(256) not null,
-   tags                 varchar(256),
-   summary              varchar(1024),
-   description          varchar(4096),
-   params               varchar(1024),
-   primary key (game_id)
-)
-engine = InnoDB charset = UTF8;
+--
+-- 表的结构 `sta_Game`
+--
 
-/*==============================================================*/
-/* Table: sta_UnderVerifiedGame                                 */
-/*==============================================================*/
-create table sta_UnderVerifiedGame
-(
-   game_id              int not null auto_increment,
-   user_id              int,
-   name                 varchar(30) not null,
-   tags                 varchar(256),
-   summary              varchar(1024),
-   content              varchar(4096),
-   download_url         varchar(256),
-   params               varchar(1024),
-   primary key (game_id)
-)
-engine = InnoDB charset = UTF8;
+CREATE TABLE IF NOT EXISTS `sta_Game` (
+  `game_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
+  `name` varchar(128) NOT NULL,
+  `alias` varchar(128) DEFAULT NULL,
+  `price` double DEFAULT NULL,
+  `deploy_url` varchar(256) NOT NULL,
+  `tags` varchar(256) DEFAULT NULL,
+  `summary` varchar(1024) DEFAULT NULL,
+  `description` varchar(4096) DEFAULT NULL,
+  `params` varchar(1024) DEFAULT NULL,
+  PRIMARY KEY (`game_id`),
+  KEY `FK_developer` (`user_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
-/*==============================================================*/
-/* Table: sta_UserAndGame                                       */
-/*==============================================================*/
-create table sta_UserAndGame
-(
-   user_id              int not null,
-   game_id              int not null,
-   primary key (user_id, game_id)
-)
-engine = InnoDB charset = UTF8;
+--
+-- 转存表中的数据 `sta_Game`
+--
 
-/*==============================================================*/
-/* Table: sta_user                                              */
-/*==============================================================*/
-create table sta_user
-(
-   user_id              int not null auto_increment,
-   username             varchar(20) not null,
-   password             varchar(128) not null,
-   nickname             varchar(20) not null,
-   email                varchar(128) not null,
-   wallet               double not null,
-   params               varchar(1024),
-   primary key (user_id)
-)
-engine = InnoDB charset = UTF8;
+INSERT INTO `sta_Game` (`game_id`, `user_id`, `name`, `alias`, `price`, `deploy_url`, `tags`, `summary`, `description`, `params`) VALUES
+(12, 2, 'BakeryGirl', '', NULL, 'http://www.baidu.com', '', '', '', NULL);
 
-alter table sta_Comment add constraint FK_HasCommemt foreign key (game_id)
-      references sta_Game (game_id) on delete restrict on update restrict;
+-- --------------------------------------------------------
 
-alter table sta_Comment add constraint FK_OwnComment foreign key (user_id)
-      references sta_user (user_id) on delete restrict on update restrict;
+--
+-- 表的结构 `sta_UnderVerifiedGame`
+--
 
-alter table sta_Game add constraint FK_developer foreign key (user_id)
-      references sta_user (user_id) on delete restrict on update restrict;
+CREATE TABLE IF NOT EXISTS `sta_UnderVerifiedGame` (
+  `game_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
+  `name` varchar(30) NOT NULL,
+  `tags` varchar(256) DEFAULT NULL,
+  `summary` varchar(1024) DEFAULT NULL,
+  `content` varchar(4096) DEFAULT NULL,
+  `download_url` varchar(256) DEFAULT NULL,
+  `params` varchar(1024) DEFAULT NULL,
+  PRIMARY KEY (`game_id`),
+  KEY `FK_IsDeveloper` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
-alter table sta_UnderVerifiedGame add constraint FK_IsDeveloper foreign key (user_id)
-      references sta_user (user_id) on delete restrict on update restrict;
+-- --------------------------------------------------------
 
-alter table sta_UserAndGame add constraint FK_sta_GameOwnUser foreign key (game_id)
-      references sta_Game (game_id) on delete restrict on update restrict;
+--
+-- 表的结构 `sta_user`
+--
 
-alter table sta_UserAndGame add constraint FK_sta_UserOwnGame foreign key (user_id)
-      references sta_user (user_id) on delete restrict on update restrict;
+CREATE TABLE IF NOT EXISTS `sta_user` (
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(20) NOT NULL,
+  `password` varchar(128) NOT NULL,
+  `nickname` varchar(20) NOT NULL,
+  `email` varchar(128) NOT NULL,
+  `wallet` double NOT NULL,
+  `params` varchar(1024) DEFAULT NULL,
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
+--
+-- 转存表中的数据 `sta_user`
+--
+
+INSERT INTO `sta_user` (`user_id`, `username`, `password`, `nickname`, `email`, `wallet`, `params`) VALUES
+(1, 'hyf042', '$1$$kix5B3eua3vczi82BnQMW1', 'hyf042', 'hyf042@gmail.com', 0, NULL),
+(2, 'admin', '$1$$CoERg7ynjYLsj2j4glJ34.', 'admin', 'admin@admin.com', 0, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `sta_UserAndGame`
+--
+
+CREATE TABLE IF NOT EXISTS `sta_UserAndGame` (
+  `user_id` int(11) NOT NULL,
+  `game_id` int(11) NOT NULL,
+  PRIMARY KEY (`user_id`,`game_id`),
+  KEY `FK_sta_GameOwnUser` (`game_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- 转存表中的数据 `sta_UserAndGame`
+--
+
+INSERT INTO `sta_UserAndGame` (`user_id`, `game_id`) VALUES
+(2, 12);
+
+--
+-- 限制导出的表
+--
+
+--
+-- 限制表 `sta_Comment`
+--
+ALTER TABLE `sta_Comment`
+  ADD CONSTRAINT `FK_OwnComment` FOREIGN KEY (`user_id`) REFERENCES `sta_user` (`user_id`),
+  ADD CONSTRAINT `FK_HasCommemt` FOREIGN KEY (`game_id`) REFERENCES `sta_Game` (`game_id`);
+
+--
+-- 限制表 `sta_Game`
+--
+ALTER TABLE `sta_Game`
+  ADD CONSTRAINT `FK_developer` FOREIGN KEY (`user_id`) REFERENCES `sta_user` (`user_id`);
+
+--
+-- 限制表 `sta_UnderVerifiedGame`
+--
+ALTER TABLE `sta_UnderVerifiedGame`
+  ADD CONSTRAINT `FK_IsDeveloper` FOREIGN KEY (`user_id`) REFERENCES `sta_user` (`user_id`);
+
+--
+-- 限制表 `sta_UserAndGame`
+--
+ALTER TABLE `sta_UserAndGame`
+  ADD CONSTRAINT `FK_sta_UserOwnGame` FOREIGN KEY (`user_id`) REFERENCES `sta_user` (`user_id`),
+  ADD CONSTRAINT `FK_sta_GameOwnUser` FOREIGN KEY (`game_id`) REFERENCES `sta_Game` (`game_id`);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
