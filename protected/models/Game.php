@@ -56,7 +56,7 @@ class Game extends CActiveRecord
 			array('name, deploy_url', 'required'),
 			array('user_id', 'numerical', 'integerOnly'=>true),
 			array('price', 'numerical'),
-			array('deploy_url', 'url'),
+			//array('deploy_url', 'url'),
 			array('name, alias', 'length', 'max'=>128),
 			array('deploy_url, tags', 'length', 'max'=>256),
 			array('summary, params', 'length', 'max'=>1024),
@@ -125,6 +125,15 @@ class Game extends CActiveRecord
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
+	}
+
+	public function beforeSave()
+	{
+		if ($this->price == null)
+			$this->price = 0;
+		if ($this->alias == null || $this->alias == "")
+			$this->alias = "";
+		return true;
 	}
 
 	public function getId()

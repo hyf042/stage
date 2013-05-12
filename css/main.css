@@ -245,6 +245,13 @@ div.search-form
 	text-decoration: none;
 }
 
+.develop .summary
+{
+	color: #888;
+	margin: 0 0 5px;
+}
+
+
 .develop .developer
 {
 	color: #888;

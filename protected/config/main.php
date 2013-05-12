@@ -43,6 +43,7 @@ return array(
 			'showScriptName'=>false,
 			'rules'=>array(
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
+				//'<controller:\w+>/api/<action:\w+>'=>'<controller>/api',
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 			),
@@ -59,7 +60,7 @@ return array(
 			'connectionString' => 'mysql:host=localhost;dbname=stage',
 			'emulatePrepare' => true,
 			'username' => 'root',
-			'password' => '',
+			'password' => 'hyfj4cexsd',
 			'charset' => 'utf8',
 			'tablePrefix' => 'sta_',
 		),

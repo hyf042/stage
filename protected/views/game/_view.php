@@ -10,6 +10,11 @@
 	<div class="developer">
 		published by <?php echo $data->developer->nickname; ?>
 	</div>
+	<div class="summary">
+		<?php
+			echo '<p/>'.$data->summary.'<p/>';
+		?>
+	</div>
 	<div class="description">
 		<?php
 			$this->beginWidget('CMarkdown', array('purifyOutput'=>true));

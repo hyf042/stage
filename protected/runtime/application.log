@@ -2246,3 +2246,664 @@ Stack trace:
 #13 {main}
 REQUEST_URI=/stage/shop/api/action=get_all
 ---
+2013/05/12 12:49:40 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: NO)' in /home/hyf042/www/yii/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /home/hyf042/www/yii/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /home/hyf042/www/yii/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /home/hyf042/www/yii/framework/base/CModule.php(387): CDbConnection->init()
+#3 /home/hyf042/www/yii/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /home/hyf042/www/yii/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /home/hyf042/www/yii/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /home/hyf042/www/yii/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(User))
+#7 /home/hyf042/www/stage/protected/models/User.php(30): CActiveRecord::model('User')
+#8 /home/hyf042/www/stage/protected/components/UserIdentity.php(22): User::model()
+#9 /home/hyf042/www/stage/protected/models/LoginForm.php(52): UserIdentity->authenticate()
+#10 /home/hyf042/www/yii/framework/validators/CInlineValidator.php(42): LoginForm->authenticate('password', Array)
+#11 /home/hyf042/www/yii/framework/validators/CValidator.php(213): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#12 /home/hyf042/www/yii/framework/base/CModel.php(159): CValidator->validate(Object(LoginForm), NULL)
+#13 /home/hyf042/www/stage/protected/controllers/UserController.php(66): CModel->validate()
+#14 /home/hyf042/www/yii/framework/web/actions/CInlineAction.php(49): UserController->actionLogin()
+#15 /home/hyf042/www/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#16 /home/hyf042/www/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#17 /home/hyf042/www/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#18 /home/hyf042/www/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#19 /home/hyf042/www/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#20 /home/hyf042/www/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#21 /home/hyf042/www/yii/framework/web/CController.php(291): CFilterChain->run()
+#22 /home/hyf042/www/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#23 /home/hyf042/www/yii/framework/web/CWebApplication.php(282): CController->run('login')
+#24 /home/hyf042/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('user/login')
+#25 /home/hyf042/www/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#26 /home/hyf042/www/stage/index.php(13): CApplication->run()
+#27 {main}
+REQUEST_URI=/stage/user/login
+HTTP_REFERER=http://10.155.0.115/stage/user/login
+---
+2013/05/12 13:17:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "api?action=get_info".' in /home/hyf042/www/yii/framework/web/CController.php:483
+Stack trace:
+#0 /home/hyf042/www/yii/framework/web/CController.php(270): CController->missingAction('api?action=get_...')
+#1 /home/hyf042/www/yii/framework/web/CWebApplication.php(282): CController->run('api?action=get_...')
+#2 /home/hyf042/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('user/api?action...')
+#3 /home/hyf042/www/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /home/hyf042/www/stage/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/stage/user/api/get_info
+---
+2013/05/12 13:17:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "api?action=get_info".' in /home/hyf042/www/yii/framework/web/CController.php:483
+Stack trace:
+#0 /home/hyf042/www/yii/framework/web/CController.php(270): CController->missingAction('api?action=get_...')
+#1 /home/hyf042/www/yii/framework/web/CWebApplication.php(282): CController->run('api?action=get_...')
+#2 /home/hyf042/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('user/api?action...')
+#3 /home/hyf042/www/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /home/hyf042/www/stage/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/stage/user/api/get_info
+---
+2013/05/12 13:18:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "index.php?r=user/api?action=get_info".' in /home/hyf042/www/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/hyf042/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('index.php?r=use...')
+#1 /home/hyf042/www/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /home/hyf042/www/stage/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/stage/user/api/get_info
+---
+2013/05/12 13:18:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "index.php?r=user/api?action=get_info".' in /home/hyf042/www/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/hyf042/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('index.php?r=use...')
+#1 /home/hyf042/www/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /home/hyf042/www/stage/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/stage/user/api/get_info
+---
+2013/05/12 13:18:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "index?r=user/api?action=get_info".' in /home/hyf042/www/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/hyf042/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('index?r=user/ap...')
+#1 /home/hyf042/www/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /home/hyf042/www/stage/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/stage/user/api/get_info
+---
+2013/05/12 13:18:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "api?action=get_info".' in /home/hyf042/www/yii/framework/web/CController.php:483
+Stack trace:
+#0 /home/hyf042/www/yii/framework/web/CController.php(270): CController->missingAction('api?action=get_...')
+#1 /home/hyf042/www/yii/framework/web/CWebApplication.php(282): CController->run('api?action=get_...')
+#2 /home/hyf042/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('user/api?action...')
+#3 /home/hyf042/www/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /home/hyf042/www/stage/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/stage/user/api/get_info
+---
+2013/05/12 13:18:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "api?action=get_info".' in /home/hyf042/www/yii/framework/web/CController.php:483
+Stack trace:
+#0 /home/hyf042/www/yii/framework/web/CController.php(270): CController->missingAction('api?action=get_...')
+#1 /home/hyf042/www/yii/framework/web/CWebApplication.php(282): CController->run('api?action=get_...')
+#2 /home/hyf042/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('user/api?action...')
+#3 /home/hyf042/www/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /home/hyf042/www/stage/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/stage/user/api/get_info
+---
+2013/05/12 13:19:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "api?action=get_info".' in /home/hyf042/www/yii/framework/web/CController.php:483
+Stack trace:
+#0 /home/hyf042/www/yii/framework/web/CController.php(270): CController->missingAction('api?action=get_...')
+#1 /home/hyf042/www/yii/framework/web/CWebApplication.php(282): CController->run('api?action=get_...')
+#2 /home/hyf042/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('user/api?action...')
+#3 /home/hyf042/www/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /home/hyf042/www/stage/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/stage/user/api/get_info
+---
+2013/05/12 13:19:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "api?action=get_info".' in /home/hyf042/www/yii/framework/web/CController.php:483
+Stack trace:
+#0 /home/hyf042/www/yii/framework/web/CController.php(270): CController->missingAction('api?action=get_...')
+#1 /home/hyf042/www/yii/framework/web/CWebApplication.php(282): CController->run('api?action=get_...')
+#2 /home/hyf042/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('user/api?action...')
+#3 /home/hyf042/www/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /home/hyf042/www/stage/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/stage/user/api/get_info
+---
+2013/05/12 13:19:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "api?action=get_info".' in /home/hyf042/www/yii/framework/web/CController.php:483
+Stack trace:
+#0 /home/hyf042/www/yii/framework/web/CController.php(270): CController->missingAction('api?action=get_...')
+#1 /home/hyf042/www/yii/framework/web/CWebApplication.php(282): CController->run('api?action=get_...')
+#2 /home/hyf042/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('user/api?action...')
+#3 /home/hyf042/www/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /home/hyf042/www/stage/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/stage/user/api/get_info
+---
+2013/05/12 13:19:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Action not found: japiGet_all' in /home/hyf042/www/stage/protected/components/JApi.php:40
+Stack trace:
+#0 /home/hyf042/www/yii/framework/web/actions/CAction.php(76): JApi->run()
+#1 /home/hyf042/www/yii/framework/web/CController.php(308): CAction->runWithParams(Array)
+#2 /home/hyf042/www/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(JApi))
+#3 /home/hyf042/www/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/hyf042/www/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 /home/hyf042/www/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 /home/hyf042/www/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /home/hyf042/www/yii/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/hyf042/www/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(JApi), Array)
+#9 /home/hyf042/www/yii/framework/web/CWebApplication.php(282): CController->run('api')
+#10 /home/hyf042/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('user/api')
+#11 /home/hyf042/www/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#12 /home/hyf042/www/stage/index.php(13): CApplication->run()
+#13 {main}
+REQUEST_URI=/stage/user/api/get_all
+---
+2013/05/12 13:19:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Action not found: japiGet_all' in /home/hyf042/www/stage/protected/components/JApi.php:40
+Stack trace:
+#0 /home/hyf042/www/yii/framework/web/actions/CAction.php(76): JApi->run()
+#1 /home/hyf042/www/yii/framework/web/CController.php(308): CAction->runWithParams(Array)
+#2 /home/hyf042/www/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(JApi))
+#3 /home/hyf042/www/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/hyf042/www/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 /home/hyf042/www/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 /home/hyf042/www/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /home/hyf042/www/yii/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/hyf042/www/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(JApi), Array)
+#9 /home/hyf042/www/yii/framework/web/CWebApplication.php(282): CController->run('api')
+#10 /home/hyf042/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('user/api')
+#11 /home/hyf042/www/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#12 /home/hyf042/www/stage/index.php(13): CApplication->run()
+#13 {main}
+REQUEST_URI=/stage/user/api/get_all
+---
+2013/05/12 13:20:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Action not found: japiIndex' in /home/hyf042/www/stage/protected/components/JApi.php:40
+Stack trace:
+#0 /home/hyf042/www/yii/framework/web/actions/CAction.php(76): JApi->run()
+#1 /home/hyf042/www/yii/framework/web/CController.php(308): CAction->runWithParams(Array)
+#2 /home/hyf042/www/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(JApi))
+#3 /home/hyf042/www/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/hyf042/www/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 /home/hyf042/www/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 /home/hyf042/www/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /home/hyf042/www/yii/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/hyf042/www/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(JApi), Array)
+#9 /home/hyf042/www/yii/framework/web/CWebApplication.php(282): CController->run('api')
+#10 /home/hyf042/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('user/api/login&...')
+#11 /home/hyf042/www/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#12 /home/hyf042/www/stage/index.php(13): CApplication->run()
+#13 {main}
+REQUEST_URI=/stage/user/api/login&username=admin&password=admin
+---
+2013/05/12 13:24:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Action not found: japiGet_all' in /home/hyf042/www/stage/protected/components/JApi.php:40
+Stack trace:
+#0 /home/hyf042/www/yii/framework/web/actions/CAction.php(76): JApi->run()
+#1 /home/hyf042/www/yii/framework/web/CController.php(308): CAction->runWithParams(Array)
+#2 /home/hyf042/www/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(JApi))
+#3 /home/hyf042/www/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/hyf042/www/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 /home/hyf042/www/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 /home/hyf042/www/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /home/hyf042/www/yii/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/hyf042/www/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(JApi), Array)
+#9 /home/hyf042/www/yii/framework/web/CWebApplication.php(282): CController->run('api')
+#10 /home/hyf042/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('user/api')
+#11 /home/hyf042/www/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#12 /home/hyf042/www/stage/index.php(13): CApplication->run()
+#13 {main}
+REQUEST_URI=/stage/user/api?action=get_all
+---
+2013/05/12 13:51:14 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Request Invalid' in /home/hyf042/www/stage/protected/components/JApi.php:83
+Stack trace:
+#0 /home/hyf042/www/stage/protected/components/JApi.php(44): JApi->runFunc()
+#1 /home/hyf042/www/yii/framework/web/actions/CAction.php(76): JApi->run()
+#2 /home/hyf042/www/yii/framework/web/CController.php(308): CAction->runWithParams(Array)
+#3 /home/hyf042/www/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(JApi))
+#4 /home/hyf042/www/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#5 /home/hyf042/www/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#6 /home/hyf042/www/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#7 /home/hyf042/www/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#8 /home/hyf042/www/yii/framework/web/CController.php(291): CFilterChain->run()
+#9 /home/hyf042/www/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(JApi), Array)
+#10 /home/hyf042/www/yii/framework/web/CWebApplication.php(282): CController->run('api')
+#11 /home/hyf042/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('user/api')
+#12 /home/hyf042/www/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#13 /home/hyf042/www/stage/index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/stage/user/api?action=login
+---
+2013/05/12 15:13:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index".' in /home/hyf042/www/yii/framework/web/CController.php:483
+Stack trace:
+#0 /home/hyf042/www/yii/framework/web/CController.php(270): CController->missingAction('')
+#1 /home/hyf042/www/yii/framework/web/CWebApplication.php(282): CController->run('')
+#2 /home/hyf042/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('game')
+#3 /home/hyf042/www/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /home/hyf042/www/stage/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/stage/game/
+---
+2013/05/12 16:31:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "view".' in /home/hyf042/www/yii/framework/web/CController.php:483
+Stack trace:
+#0 /home/hyf042/www/yii/framework/web/CController.php(270): CController->missingAction('view')
+#1 /home/hyf042/www/yii/framework/web/CWebApplication.php(282): CController->run('view')
+#2 /home/hyf042/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('develop/view')
+#3 /home/hyf042/www/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /home/hyf042/www/stage/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/stage/develop/12
+HTTP_REFERER=http://localhost/stage/develop/admin
+---
+2013/05/12 16:40:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "data/test.cpp".' in /home/hyf042/www/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/hyf042/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('data/test.cpp')
+#1 /home/hyf042/www/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /home/hyf042/www/stage/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/stage/data/test.cpp
+---
+2013/05/12 16:40:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "data/test.cpp".' in /home/hyf042/www/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/hyf042/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('data/test.cpp')
+#1 /home/hyf042/www/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /home/hyf042/www/stage/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/stage/data/test.cpp
+---
+2013/05/12 16:40:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "data/test.cpp".' in /home/hyf042/www/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/hyf042/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('data/test.cpp')
+#1 /home/hyf042/www/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /home/hyf042/www/stage/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/stage/data/test.cpp
+---
+2013/05/12 16:40:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "data/test.cpp".' in /home/hyf042/www/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/hyf042/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('data/test.cpp')
+#1 /home/hyf042/www/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /home/hyf042/www/stage/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/stage/data/test.cpp
+---
+2013/05/12 16:40:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "data/test.cp".' in /home/hyf042/www/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/hyf042/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('data/test.cp')
+#1 /home/hyf042/www/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /home/hyf042/www/stage/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/stage/data/test.cp
+---
+2013/05/12 16:45:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "view".' in /home/hyf042/www/yii/framework/web/CController.php:483
+Stack trace:
+#0 /home/hyf042/www/yii/framework/web/CController.php(270): CController->missingAction('view')
+#1 /home/hyf042/www/yii/framework/web/CWebApplication.php(282): CController->run('view')
+#2 /home/hyf042/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('develop/view')
+#3 /home/hyf042/www/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /home/hyf042/www/stage/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/stage/develop/12
+HTTP_REFERER=http://localhost/stage/develop/admin
+---
+2013/05/12 16:47:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "test.cpp".' in /home/hyf042/www/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/hyf042/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('test.cpp')
+#1 /home/hyf042/www/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /home/hyf042/www/stage/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/stage/test.cpp
+---
+2013/05/12 17:03:12 [error] [exception.CException] exception 'CException' with message 'Property "Game.12" is not defined.' in /home/hyf042/www/yii/framework/base/CComponent.php:130
+Stack trace:
+#0 /home/hyf042/www/yii/framework/db/ar/CActiveRecord.php(143): CComponent->__get('12')
+#1 /home/hyf042/www/stage/protected/extensions/CAdvancedArBehavior.php(165): CActiveRecord->__get('12')
+#2 /home/hyf042/www/stage/protected/extensions/CAdvancedArBehavior.php(107): CAdvancedArbehavior->writeRelation(Array)
+#3 /home/hyf042/www/stage/protected/extensions/CAdvancedArBehavior.php(93): CAdvancedArbehavior->writeManyManyTables()
+#4 /home/hyf042/www/yii/framework/base/CComponent.php(558): CAdvancedArbehavior->afterSave(Object(CEvent))
+#5 /home/hyf042/www/yii/framework/db/ar/CActiveRecord.php(838): CComponent->raiseEvent('onAfterSave', Object(CEvent))
+#6 /home/hyf042/www/yii/framework/db/ar/CActiveRecord.php(918): CActiveRecord->onAfterSave(Object(CEvent))
+#7 /home/hyf042/www/yii/framework/db/ar/CActiveRecord.php(1072): CActiveRecord->afterSave()
+#8 /home/hyf042/www/yii/framework/db/ar/CActiveRecord.php(795): CActiveRecord->update(NULL)
+#9 /home/hyf042/www/stage/protected/controllers/ShopController.php(76): CActiveRecord->save()
+#10 [internal function]: ShopController->actionBuy('13')
+#11 /home/hyf042/www/yii/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(ShopController), Array)
+#12 /home/hyf042/www/yii/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(ShopController), Object(ReflectionMethod), Array)
+#13 /home/hyf042/www/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#14 /home/hyf042/www/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#15 /home/hyf042/www/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#16 /home/hyf042/www/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#17 /home/hyf042/www/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#18 /home/hyf042/www/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#19 /home/hyf042/www/yii/framework/web/CController.php(291): CFilterChain->run()
+#20 /home/hyf042/www/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#21 /home/hyf042/www/yii/framework/web/CWebApplication.php(282): CController->run('buy')
+#22 /home/hyf042/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('shop/buy')
+#23 /home/hyf042/www/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#24 /home/hyf042/www/stage/index.php(13): CApplication->run()
+#25 {main}
+REQUEST_URI=/stage/shop/buy?game_id=13&yt0=Get+it
+HTTP_REFERER=http://localhost/stage/game/13?name=Hamster+Ball
+---
+2013/05/12 17:06:07 [error] [exception.CException] exception 'CException' with message 'Property "Game.12" is not defined.' in /home/hyf042/www/yii/framework/base/CComponent.php:130
+Stack trace:
+#0 /home/hyf042/www/yii/framework/db/ar/CActiveRecord.php(143): CComponent->__get('12')
+#1 /home/hyf042/www/stage/protected/extensions/CAdvancedArBehavior.php(165): CActiveRecord->__get('12')
+#2 /home/hyf042/www/stage/protected/extensions/CAdvancedArBehavior.php(107): CAdvancedArbehavior->writeRelation(Array)
+#3 /home/hyf042/www/stage/protected/extensions/CAdvancedArBehavior.php(93): CAdvancedArbehavior->writeManyManyTables()
+#4 /home/hyf042/www/yii/framework/base/CComponent.php(558): CAdvancedArbehavior->afterSave(Object(CEvent))
+#5 /home/hyf042/www/yii/framework/db/ar/CActiveRecord.php(838): CComponent->raiseEvent('onAfterSave', Object(CEvent))
+#6 /home/hyf042/www/yii/framework/db/ar/CActiveRecord.php(918): CActiveRecord->onAfterSave(Object(CEvent))
+#7 /home/hyf042/www/yii/framework/db/ar/CActiveRecord.php(1072): CActiveRecord->afterSave()
+#8 /home/hyf042/www/yii/framework/db/ar/CActiveRecord.php(795): CActiveRecord->update(NULL)
+#9 /home/hyf042/www/stage/protected/controllers/ShopController.php(76): CActiveRecord->save()
+#10 [internal function]: ShopController->actionBuy('13')
+#11 /home/hyf042/www/yii/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(ShopController), Array)
+#12 /home/hyf042/www/yii/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(ShopController), Object(ReflectionMethod), Array)
+#13 /home/hyf042/www/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#14 /home/hyf042/www/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#15 /home/hyf042/www/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#16 /home/hyf042/www/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#17 /home/hyf042/www/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#18 /home/hyf042/www/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#19 /home/hyf042/www/yii/framework/web/CController.php(291): CFilterChain->run()
+#20 /home/hyf042/www/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#21 /home/hyf042/www/yii/framework/web/CWebApplication.php(282): CController->run('buy')
+#22 /home/hyf042/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('shop/buy')
+#23 /home/hyf042/www/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#24 /home/hyf042/www/stage/index.php(13): CApplication->run()
+#25 {main}
+REQUEST_URI=/stage/shop/buy?game_id=13&yt0=Get+it
+HTTP_REFERER=http://localhost/stage/game/13?name=Hamster+Ball
+---
+2013/05/12 17:09:06 [error] [exception.CException] exception 'CException' with message 'Property "Game.13" is not defined.' in /home/hyf042/www/yii/framework/base/CComponent.php:130
+Stack trace:
+#0 /home/hyf042/www/yii/framework/db/ar/CActiveRecord.php(143): CComponent->__get('13')
+#1 /home/hyf042/www/stage/protected/extensions/CAdvancedArBehavior.php(165): CActiveRecord->__get('13')
+#2 /home/hyf042/www/stage/protected/extensions/CAdvancedArBehavior.php(107): CAdvancedArbehavior->writeRelation(Array)
+#3 /home/hyf042/www/stage/protected/extensions/CAdvancedArBehavior.php(93): CAdvancedArbehavior->writeManyManyTables()
+#4 /home/hyf042/www/yii/framework/base/CComponent.php(558): CAdvancedArbehavior->afterSave(Object(CEvent))
+#5 /home/hyf042/www/yii/framework/db/ar/CActiveRecord.php(838): CComponent->raiseEvent('onAfterSave', Object(CEvent))
+#6 /home/hyf042/www/yii/framework/db/ar/CActiveRecord.php(918): CActiveRecord->onAfterSave(Object(CEvent))
+#7 /home/hyf042/www/yii/framework/db/ar/CActiveRecord.php(1072): CActiveRecord->afterSave()
+#8 /home/hyf042/www/yii/framework/db/ar/CActiveRecord.php(795): CActiveRecord->update(NULL)
+#9 /home/hyf042/www/stage/protected/controllers/ShopController.php(76): CActiveRecord->save()
+#10 [internal function]: ShopController->actionBuy('12')
+#11 /home/hyf042/www/yii/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(ShopController), Array)
+#12 /home/hyf042/www/yii/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(ShopController), Object(ReflectionMethod), Array)
+#13 /home/hyf042/www/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#14 /home/hyf042/www/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#15 /home/hyf042/www/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#16 /home/hyf042/www/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#17 /home/hyf042/www/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#18 /home/hyf042/www/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#19 /home/hyf042/www/yii/framework/web/CController.php(291): CFilterChain->run()
+#20 /home/hyf042/www/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#21 /home/hyf042/www/yii/framework/web/CWebApplication.php(282): CController->run('buy')
+#22 /home/hyf042/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('shop/buy')
+#23 /home/hyf042/www/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#24 /home/hyf042/www/stage/index.php(13): CApplication->run()
+#25 {main}
+REQUEST_URI=/stage/shop/buy?game_id=12&yt0=Get+it
+HTTP_REFERER=http://localhost/stage/game/12?name=BakeryGirl
+---
+2013/05/12 17:10:29 [error] [exception.CException] exception 'CException' with message 'Property "Game.12" is not defined.' in /home/hyf042/www/yii/framework/base/CComponent.php:130
+Stack trace:
+#0 /home/hyf042/www/yii/framework/db/ar/CActiveRecord.php(143): CComponent->__get('12')
+#1 /home/hyf042/www/stage/protected/extensions/CAdvancedArBehavior.php(165): CActiveRecord->__get('12')
+#2 /home/hyf042/www/stage/protected/extensions/CAdvancedArBehavior.php(107): CAdvancedArbehavior->writeRelation(Array)
+#3 /home/hyf042/www/stage/protected/extensions/CAdvancedArBehavior.php(93): CAdvancedArbehavior->writeManyManyTables()
+#4 /home/hyf042/www/yii/framework/base/CComponent.php(558): CAdvancedArbehavior->afterSave(Object(CEvent))
+#5 /home/hyf042/www/yii/framework/db/ar/CActiveRecord.php(838): CComponent->raiseEvent('onAfterSave', Object(CEvent))
+#6 /home/hyf042/www/yii/framework/db/ar/CActiveRecord.php(918): CActiveRecord->onAfterSave(Object(CEvent))
+#7 /home/hyf042/www/yii/framework/db/ar/CActiveRecord.php(1072): CActiveRecord->afterSave()
+#8 /home/hyf042/www/yii/framework/db/ar/CActiveRecord.php(795): CActiveRecord->update(NULL)
+#9 /home/hyf042/www/stage/protected/controllers/ShopController.php(76): CActiveRecord->save()
+#10 [internal function]: ShopController->actionBuy('13')
+#11 /home/hyf042/www/yii/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(ShopController), Array)
+#12 /home/hyf042/www/yii/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(ShopController), Object(ReflectionMethod), Array)
+#13 /home/hyf042/www/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#14 /home/hyf042/www/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#15 /home/hyf042/www/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#16 /home/hyf042/www/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#17 /home/hyf042/www/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#18 /home/hyf042/www/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#19 /home/hyf042/www/yii/framework/web/CController.php(291): CFilterChain->run()
+#20 /home/hyf042/www/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#21 /home/hyf042/www/yii/framework/web/CWebApplication.php(282): CController->run('buy')
+#22 /home/hyf042/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('shop/buy')
+#23 /home/hyf042/www/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#24 /home/hyf042/www/stage/index.php(13): CApplication->run()
+#25 {main}
+REQUEST_URI=/stage/shop/buy?game_id=13&yt0=Get+it
+HTTP_REFERER=http://localhost/stage/game/13?name=Hamster+Ball
+---
+2013/05/12 17:10:58 [error] [exception.CException] exception 'CException' with message 'Property "Game.12" is not defined.' in /home/hyf042/www/yii/framework/base/CComponent.php:130
+Stack trace:
+#0 /home/hyf042/www/yii/framework/db/ar/CActiveRecord.php(143): CComponent->__get('12')
+#1 /home/hyf042/www/stage/protected/extensions/CAdvancedArBehavior.php(165): CActiveRecord->__get('12')
+#2 /home/hyf042/www/stage/protected/extensions/CAdvancedArBehavior.php(107): CAdvancedArbehavior->writeRelation(Array)
+#3 /home/hyf042/www/stage/protected/extensions/CAdvancedArBehavior.php(93): CAdvancedArbehavior->writeManyManyTables()
+#4 /home/hyf042/www/yii/framework/base/CComponent.php(558): CAdvancedArbehavior->afterSave(Object(CEvent))
+#5 /home/hyf042/www/yii/framework/db/ar/CActiveRecord.php(838): CComponent->raiseEvent('onAfterSave', Object(CEvent))
+#6 /home/hyf042/www/yii/framework/db/ar/CActiveRecord.php(918): CActiveRecord->onAfterSave(Object(CEvent))
+#7 /home/hyf042/www/yii/framework/db/ar/CActiveRecord.php(1072): CActiveRecord->afterSave()
+#8 /home/hyf042/www/yii/framework/db/ar/CActiveRecord.php(795): CActiveRecord->update(NULL)
+#9 /home/hyf042/www/stage/protected/controllers/ShopController.php(76): CActiveRecord->save()
+#10 [internal function]: ShopController->actionBuy('13')
+#11 /home/hyf042/www/yii/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(ShopController), Array)
+#12 /home/hyf042/www/yii/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(ShopController), Object(ReflectionMethod), Array)
+#13 /home/hyf042/www/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#14 /home/hyf042/www/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#15 /home/hyf042/www/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#16 /home/hyf042/www/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#17 /home/hyf042/www/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#18 /home/hyf042/www/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#19 /home/hyf042/www/yii/framework/web/CController.php(291): CFilterChain->run()
+#20 /home/hyf042/www/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#21 /home/hyf042/www/yii/framework/web/CWebApplication.php(282): CController->run('buy')
+#22 /home/hyf042/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('shop/buy')
+#23 /home/hyf042/www/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#24 /home/hyf042/www/stage/index.php(13): CApplication->run()
+#25 {main}
+REQUEST_URI=/stage/shop/buy?game_id=13
+---
+2013/05/12 17:24:10 [error] [exception.CException] exception 'CException' with message 'Property "Game.12" is not defined.' in /home/hyf042/www/yii/framework/base/CComponent.php:130
+Stack trace:
+#0 /home/hyf042/www/yii/framework/db/ar/CActiveRecord.php(143): CComponent->__get('12')
+#1 /home/hyf042/www/stage/protected/extensions/CAdvancedArBehavior.php(166): CActiveRecord->__get('12')
+#2 /home/hyf042/www/stage/protected/extensions/CAdvancedArBehavior.php(107): CAdvancedArbehavior->writeRelation(Array)
+#3 /home/hyf042/www/stage/protected/extensions/CAdvancedArBehavior.php(93): CAdvancedArbehavior->writeManyManyTables()
+#4 /home/hyf042/www/yii/framework/base/CComponent.php(558): CAdvancedArbehavior->afterSave(Object(CEvent))
+#5 /home/hyf042/www/yii/framework/db/ar/CActiveRecord.php(838): CComponent->raiseEvent('onAfterSave', Object(CEvent))
+#6 /home/hyf042/www/yii/framework/db/ar/CActiveRecord.php(918): CActiveRecord->onAfterSave(Object(CEvent))
+#7 /home/hyf042/www/yii/framework/db/ar/CActiveRecord.php(1072): CActiveRecord->afterSave()
+#8 /home/hyf042/www/yii/framework/db/ar/CActiveRecord.php(795): CActiveRecord->update(NULL)
+#9 /home/hyf042/www/stage/protected/controllers/ShopController.php(76): CActiveRecord->save()
+#10 [internal function]: ShopController->actionBuy('13')
+#11 /home/hyf042/www/yii/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(ShopController), Array)
+#12 /home/hyf042/www/yii/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(ShopController), Object(ReflectionMethod), Array)
+#13 /home/hyf042/www/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#14 /home/hyf042/www/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#15 /home/hyf042/www/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#16 /home/hyf042/www/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#17 /home/hyf042/www/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#18 /home/hyf042/www/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#19 /home/hyf042/www/yii/framework/web/CController.php(291): CFilterChain->run()
+#20 /home/hyf042/www/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#21 /home/hyf042/www/yii/framework/web/CWebApplication.php(282): CController->run('buy')
+#22 /home/hyf042/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('shop/buy')
+#23 /home/hyf042/www/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#24 /home/hyf042/www/stage/index.php(13): CApplication->run()
+#25 {main}
+REQUEST_URI=/stage/shop/buy?game_id=13
+---
+2013/05/12 17:28:17 [error] [exception.CException] exception 'CException' with message 'Property "Game.13" is not defined.' in /home/hyf042/www/yii/framework/base/CComponent.php:130
+Stack trace:
+#0 /home/hyf042/www/yii/framework/db/ar/CActiveRecord.php(143): CComponent->__get('13')
+#1 /home/hyf042/www/stage/protected/extensions/CAdvancedArBehavior.php(166): CActiveRecord->__get('13')
+#2 /home/hyf042/www/stage/protected/extensions/CAdvancedArBehavior.php(107): CAdvancedArbehavior->writeRelation(Array)
+#3 /home/hyf042/www/stage/protected/extensions/CAdvancedArBehavior.php(93): CAdvancedArbehavior->writeManyManyTables()
+#4 /home/hyf042/www/yii/framework/base/CComponent.php(558): CAdvancedArbehavior->afterSave(Object(CEvent))
+#5 /home/hyf042/www/yii/framework/db/ar/CActiveRecord.php(840): CComponent->raiseEvent('onAfterSave', Object(CEvent))
+#6 /home/hyf042/www/yii/framework/db/ar/CActiveRecord.php(920): CActiveRecord->onAfterSave(Object(CEvent))
+#7 /home/hyf042/www/yii/framework/db/ar/CActiveRecord.php(1074): CActiveRecord->afterSave()
+#8 /home/hyf042/www/yii/framework/db/ar/CActiveRecord.php(796): CActiveRecord->update(NULL)
+#9 /home/hyf042/www/stage/protected/controllers/ShopController.php(76): CActiveRecord->save()
+#10 [internal function]: ShopController->actionBuy('12')
+#11 /home/hyf042/www/yii/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(ShopController), Array)
+#12 /home/hyf042/www/yii/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(ShopController), Object(ReflectionMethod), Array)
+#13 /home/hyf042/www/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#14 /home/hyf042/www/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#15 /home/hyf042/www/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#16 /home/hyf042/www/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#17 /home/hyf042/www/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#18 /home/hyf042/www/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#19 /home/hyf042/www/yii/framework/web/CController.php(291): CFilterChain->run()
+#20 /home/hyf042/www/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#21 /home/hyf042/www/yii/framework/web/CWebApplication.php(282): CController->run('buy')
+#22 /home/hyf042/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('shop/buy')
+#23 /home/hyf042/www/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#24 /home/hyf042/www/stage/index.php(13): CApplication->run()
+#25 {main}
+REQUEST_URI=/stage/shop/buy?game_id=12
+---
+2013/05/12 17:32:04 [error] [exception.CException] exception 'CException' with message 'Property "Game.13" is not defined.' in /home/hyf042/www/yii/framework/base/CComponent.php:130
+Stack trace:
+#0 /home/hyf042/www/yii/framework/db/ar/CActiveRecord.php(143): CComponent->__get('13')
+#1 /home/hyf042/www/stage/protected/extensions/CAdvancedArBehavior.php(165): CActiveRecord->__get('13')
+#2 /home/hyf042/www/stage/protected/extensions/CAdvancedArBehavior.php(107): CAdvancedArbehavior->writeRelation(Array)
+#3 /home/hyf042/www/stage/protected/extensions/CAdvancedArBehavior.php(93): CAdvancedArbehavior->writeManyManyTables()
+#4 /home/hyf042/www/yii/framework/base/CComponent.php(558): CAdvancedArbehavior->afterSave(Object(CEvent))
+#5 /home/hyf042/www/yii/framework/db/ar/CActiveRecord.php(840): CComponent->raiseEvent('onAfterSave', Object(CEvent))
+#6 /home/hyf042/www/yii/framework/db/ar/CActiveRecord.php(920): CActiveRecord->onAfterSave(Object(CEvent))
+#7 /home/hyf042/www/yii/framework/db/ar/CActiveRecord.php(1074): CActiveRecord->afterSave()
+#8 /home/hyf042/www/yii/framework/db/ar/CActiveRecord.php(796): CActiveRecord->update(NULL)
+#9 /home/hyf042/www/stage/protected/controllers/ShopController.php(76): CActiveRecord->save()
+#10 [internal function]: ShopController->actionBuy('12')
+#11 /home/hyf042/www/yii/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(ShopController), Array)
+#12 /home/hyf042/www/yii/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(ShopController), Object(ReflectionMethod), Array)
+#13 /home/hyf042/www/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#14 /home/hyf042/www/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#15 /home/hyf042/www/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#16 /home/hyf042/www/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#17 /home/hyf042/www/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#18 /home/hyf042/www/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#19 /home/hyf042/www/yii/framework/web/CController.php(291): CFilterChain->run()
+#20 /home/hyf042/www/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#21 /home/hyf042/www/yii/framework/web/CWebApplication.php(282): CController->run('buy')
+#22 /home/hyf042/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('shop/buy')
+#23 /home/hyf042/www/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#24 /home/hyf042/www/stage/index.php(13): CApplication->run()
+#25 {main}
+REQUEST_URI=/stage/shop/buy?game_id=12
+---
+2013/05/12 17:33:12 [error] [exception.CException] exception 'CException' with message 'Property "Game.12" is not defined.' in /home/hyf042/www/yii/framework/base/CComponent.php:130
+Stack trace:
+#0 /home/hyf042/www/yii/framework/db/ar/CActiveRecord.php(143): CComponent->__get('12')
+#1 /home/hyf042/www/stage/protected/extensions/CAdvancedArBehavior.php(167): CActiveRecord->__get('12')
+#2 /home/hyf042/www/stage/protected/extensions/CAdvancedArBehavior.php(107): CAdvancedArbehavior->writeRelation(Array)
+#3 /home/hyf042/www/stage/protected/extensions/CAdvancedArBehavior.php(93): CAdvancedArbehavior->writeManyManyTables()
+#4 /home/hyf042/www/yii/framework/base/CComponent.php(558): CAdvancedArbehavior->afterSave(Object(CEvent))
+#5 /home/hyf042/www/yii/framework/db/ar/CActiveRecord.php(840): CComponent->raiseEvent('onAfterSave', Object(CEvent))
+#6 /home/hyf042/www/yii/framework/db/ar/CActiveRecord.php(920): CActiveRecord->onAfterSave(Object(CEvent))
+#7 /home/hyf042/www/yii/framework/db/ar/CActiveRecord.php(1074): CActiveRecord->afterSave()
+#8 /home/hyf042/www/yii/framework/db/ar/CActiveRecord.php(796): CActiveRecord->update(NULL)
+#9 /home/hyf042/www/stage/protected/controllers/ShopController.php(76): CActiveRecord->save()
+#10 [internal function]: ShopController->actionBuy('13')
+#11 /home/hyf042/www/yii/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(ShopController), Array)
+#12 /home/hyf042/www/yii/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(ShopController), Object(ReflectionMethod), Array)
+#13 /home/hyf042/www/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#14 /home/hyf042/www/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#15 /home/hyf042/www/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#16 /home/hyf042/www/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#17 /home/hyf042/www/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#18 /home/hyf042/www/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#19 /home/hyf042/www/yii/framework/web/CController.php(291): CFilterChain->run()
+#20 /home/hyf042/www/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#21 /home/hyf042/www/yii/framework/web/CWebApplication.php(282): CController->run('buy')
+#22 /home/hyf042/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('shop/buy')
+#23 /home/hyf042/www/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#24 /home/hyf042/www/stage/index.php(13): CApplication->run()
+#25 {main}
+REQUEST_URI=/stage/shop/buy?game_id=13
+---
+2013/05/12 17:33:30 [error] [php] Trying to get property of non-object (/home/hyf042/www/stage/protected/extensions/CAdvancedArBehavior.php:163)
+Stack trace:
+#0 /home/hyf042/www/yii/framework/base/CComponent.php(558): CAdvancedArbehavior->afterSave()
+#1 /home/hyf042/www/yii/framework/db/ar/CActiveRecord.php(840): User->raiseEvent()
+#2 /home/hyf042/www/yii/framework/db/ar/CActiveRecord.php(920): User->onAfterSave()
+#3 /home/hyf042/www/yii/framework/db/ar/CActiveRecord.php(1074): User->afterSave()
+#4 /home/hyf042/www/yii/framework/db/ar/CActiveRecord.php(796): User->update()
+#5 /home/hyf042/www/stage/protected/controllers/ShopController.php(76): User->save()
+#6 unknown(0): ShopController->actionBuy()
+#7 /home/hyf042/www/yii/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs()
+#8 /home/hyf042/www/yii/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#9 /home/hyf042/www/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#10 /home/hyf042/www/yii/framework/web/filters/CFilterChain.php(133): ShopController->runAction()
+#11 /home/hyf042/www/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#12 /home/hyf042/www/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#13 /home/hyf042/www/yii/framework/web/filters/CInlineFilter.php(58): ShopController->filterAccessControl()
+#14 /home/hyf042/www/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#15 /home/hyf042/www/yii/framework/web/CController.php(291): CFilterChain->run()
+#16 /home/hyf042/www/yii/framework/web/CController.php(265): ShopController->runActionWithFilters()
+#17 /home/hyf042/www/yii/framework/web/CWebApplication.php(282): ShopController->run()
+#18 /home/hyf042/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#19 /home/hyf042/www/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#20 /home/hyf042/www/stage/index.php(13): CWebApplication->run()
+REQUEST_URI=/stage/shop/buy?game_id=13
+in /home/hyf042/www/stage/protected/extensions/CAdvancedArBehavior.php (163)
+in /home/hyf042/www/stage/protected/extensions/CAdvancedArBehavior.php (107)
+in /home/hyf042/www/stage/protected/extensions/CAdvancedArBehavior.php (93)
+2013/05/12 17:42:58 [error] [php] require(): Filename cannot be empty (/home/hyf042/www/yii/framework/web/CBaseController.php:130)
+Stack trace:
+#0 /home/hyf042/www/yii/framework/zii/widgets/CListView.php(281): DevelopController->renderFile()
+#1 /home/hyf042/www/yii/framework/zii/widgets/CBaseListView.php(160): CListView->renderItems()
+#2 unknown(0): CListView->renderSection()
+#3 /home/hyf042/www/yii/framework/zii/widgets/CBaseListView.php(143): preg_replace_callback()
+#4 /home/hyf042/www/yii/framework/zii/widgets/CBaseListView.php(128): CListView->renderContent()
+#5 /home/hyf042/www/yii/framework/web/CBaseController.php(173): CListView->run()
+#6 /home/hyf042/www/stage/protected/views/develop/index.php(20): DevelopController->widget()
+#7 /home/hyf042/www/yii/framework/web/CBaseController.php(126): require()
+#8 /home/hyf042/www/yii/framework/web/CBaseController.php(95): DevelopController->renderInternal()
+#9 /home/hyf042/www/yii/framework/web/CController.php(869): DevelopController->renderFile()
+#10 /home/hyf042/www/yii/framework/web/CController.php(782): DevelopController->renderPartial()
+#11 /home/hyf042/www/stage/protected/controllers/DevelopController.php(128): DevelopController->render()
+#12 /home/hyf042/www/yii/framework/web/actions/CInlineAction.php(49): DevelopController->actionIndex()
+#13 /home/hyf042/www/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#14 /home/hyf042/www/yii/framework/web/filters/CFilterChain.php(133): DevelopController->runAction()
+#15 /home/hyf042/www/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#16 /home/hyf042/www/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#17 /home/hyf042/www/yii/framework/web/filters/CInlineFilter.php(58): DevelopController->filterAccessControl()
+#18 /home/hyf042/www/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#19 /home/hyf042/www/yii/framework/web/CController.php(291): CFilterChain->run()
+#20 /home/hyf042/www/yii/framework/web/CController.php(265): DevelopController->runActionWithFilters()
+#21 /home/hyf042/www/yii/framework/web/CWebApplication.php(282): DevelopController->run()
+#22 /home/hyf042/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#23 /home/hyf042/www/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#24 /home/hyf042/www/stage/index.php(13): CWebApplication->run()
+REQUEST_URI=/stage/develop/index
+in /home/hyf042/www/stage/protected/views/develop/index.php (20)
+in /home/hyf042/www/stage/protected/controllers/DevelopController.php (128)
+in /home/hyf042/www/stage/index.php (13)
+2013/05/12 17:48:48 [error] [php] require(): Filename cannot be empty (/home/hyf042/www/yii/framework/web/CBaseController.php:130)
+Stack trace:
+#0 /home/hyf042/www/yii/framework/zii/widgets/CListView.php(281): DevelopController->renderFile()
+#1 /home/hyf042/www/yii/framework/zii/widgets/CBaseListView.php(160): CListView->renderItems()
+#2 unknown(0): CListView->renderSection()
+#3 /home/hyf042/www/yii/framework/zii/widgets/CBaseListView.php(143): preg_replace_callback()
+#4 /home/hyf042/www/yii/framework/zii/widgets/CBaseListView.php(128): CListView->renderContent()
+#5 /home/hyf042/www/yii/framework/web/CBaseController.php(173): CListView->run()
+#6 /home/hyf042/www/stage/protected/views/develop/index.php(20): DevelopController->widget()
+#7 /home/hyf042/www/yii/framework/web/CBaseController.php(126): require()
+#8 /home/hyf042/www/yii/framework/web/CBaseController.php(95): DevelopController->renderInternal()
+#9 /home/hyf042/www/yii/framework/web/CController.php(869): DevelopController->renderFile()
+#10 /home/hyf042/www/yii/framework/web/CController.php(782): DevelopController->renderPartial()
+#11 /home/hyf042/www/stage/protected/controllers/DevelopController.php(128): DevelopController->render()
+#12 /home/hyf042/www/yii/framework/web/actions/CInlineAction.php(49): DevelopController->actionIndex()
+#13 /home/hyf042/www/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#14 /home/hyf042/www/yii/framework/web/filters/CFilterChain.php(133): DevelopController->runAction()
+#15 /home/hyf042/www/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#16 /home/hyf042/www/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#17 /home/hyf042/www/yii/framework/web/filters/CInlineFilter.php(58): DevelopController->filterAccessControl()
+#18 /home/hyf042/www/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#19 /home/hyf042/www/yii/framework/web/CController.php(291): CFilterChain->run()
+#20 /home/hyf042/www/yii/framework/web/CController.php(265): DevelopController->runActionWithFilters()
+#21 /home/hyf042/www/yii/framework/web/CWebApplication.php(282): DevelopController->run()
+#22 /home/hyf042/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#23 /home/hyf042/www/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#24 /home/hyf042/www/stage/index.php(13): CWebApplication->run()
+REQUEST_URI=/stage/develop/index
+in /home/hyf042/www/stage/protected/views/develop/index.php (20)
+in /home/hyf042/www/stage/protected/controllers/DevelopController.php (128)
+in /home/hyf042/www/stage/index.php (13)

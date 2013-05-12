@@ -28,8 +28,8 @@ class DevelopController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index'),
-				'users'=>array('*'),
+				'actions'=>array('index', 'view'),
+				'users'=>array('@'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('publish','update'),
@@ -43,6 +43,11 @@ class DevelopController extends Controller
 				'users'=>array('*'),
 			),
 		);
+	}
+
+	public function actionView($id)
+	{
+		$this->redirect(array('game/view','id'=>$id));
 	}
 
 	/**

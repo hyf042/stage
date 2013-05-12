@@ -108,6 +108,9 @@ class UserController extends Controller
 	 */
 	public function japiLogin($username, $password)
 	{
+		if (!Yii::app()->user->isGuest)
+			return array('ret'=>'failed', 'reason'=>'already login');
+
 		$model=new LoginForm;
 
 		$model->attributes=array('username'=>$username, 'password'=>$password, 'rememberMe'=>false);
@@ -115,7 +118,14 @@ class UserController extends Controller
 		if($model->validate() && $model->login())
 			return array('ret'=>'ok');
 		else
-			return array('ret'=>'failed');
+		{
+			if ($model->identity->errorCode == UserIdentity::ERROR_USERNAME_INVALID)
+				return array('ret'=>'failed', 'reason'=>'username invalid');
+			else if ($model->identity->errorCode == UserIdentity::ERROR_PASSWORD_INVALID)
+				return array('ret'=>'failed', 'reason'=>'password invalid');
+			else
+				return array('ret'=>'failed', 'reason'=>'unknown');
+		}
 	}
 	public function japiLogout()
 	{
@@ -131,7 +141,13 @@ class UserController extends Controller
 			return array('ret'=>'failed', 'reason'=>'not login');
 
 		return array('ret'=>'ok',
-					Yii::app()->user->model->nickname);
+			'info'=>User::model()->findByPk(Yii::app()->user->id)->attributes);
+	}
+	public function japiTick()
+	{
+		if (Yii::app()->user->isGuest)
+			return array('ret'=>'failed');
+		return array('ret'=>'ok');
 	}
 	/*
 	 * API Region End

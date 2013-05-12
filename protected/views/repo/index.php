@@ -11,5 +11,5 @@ $this->breadcrumbs=array(
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,
-	'itemView'=>'gamelist_view',
+	'itemView'=>'//game/gamelist_view',
 )); ?>

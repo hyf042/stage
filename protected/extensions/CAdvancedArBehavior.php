@@ -153,7 +153,6 @@ class CAdvancedArbehavior extends CActiveRecordBehavior
 	protected function writeRelation($relation) 
 	{
 		$key = $relation['key'];
-
 		// Only an object or primary key id is given
 		if(!is_array($this->owner->$key) && $this->owner->$key != array()) 		
 			$this->owner->$key = array($this->owner->$key);
@@ -162,7 +161,11 @@ class CAdvancedArbehavior extends CActiveRecordBehavior
 		foreach((array)$this->owner->$key as $foreignobject)
 		{
 			if(!is_numeric($foreignobject) && is_object($foreignobject))
-				$foreignobject = $foreignobject->{$foreignobject->$relation['m2mForeignField']};
+			{
+				//!HINT: I don't know why ->{} here, cause a get_(number) error
+				//$foreignobject = $foreignobject->{$foreignobject->$relation['m2mForeignField']};
+				$foreignobject = $foreignobject->$relation['m2mForeignField'];
+			}
 			$this->execute(
 					$this->makeManyManyInsertCommand($relation, $foreignobject));
 		}
