@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2013 年 05 月 11 日 20:11
+-- 生成日期: 2013 年 05 月 12 日 18:01
 -- 服务器版本: 5.5.31
 -- PHP 版本: 5.3.10-1ubuntu3.6
 
@@ -56,14 +56,15 @@ CREATE TABLE IF NOT EXISTS `sta_Game` (
   `params` varchar(1024) DEFAULT NULL,
   PRIMARY KEY (`game_id`),
   KEY `FK_developer` (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
 
 --
 -- 转存表中的数据 `sta_Game`
 --
 
 INSERT INTO `sta_Game` (`game_id`, `user_id`, `name`, `alias`, `price`, `deploy_url`, `tags`, `summary`, `description`, `params`) VALUES
-(12, 2, 'BakeryGirl', '', NULL, 'http://www.baidu.com', '', '', '', NULL);
+(12, 2, 'BakeryGirl', '面包房少女', 0, 'http://10.155.0.115/stage/data/test.zip', '', '硬派SLG回归', '尚未上传，请勿购买。', NULL),
+(13, 2, 'Hamster Ball', '仓鼠球', 0, 'http://10.155.0.115/stage/data/hamster.zip', '', '好玩的仓鼠球', '真的很有意思', NULL);
 
 -- --------------------------------------------------------
 
@@ -127,7 +128,10 @@ CREATE TABLE IF NOT EXISTS `sta_UserAndGame` (
 --
 
 INSERT INTO `sta_UserAndGame` (`user_id`, `game_id`) VALUES
-(2, 12);
+(1, 12),
+(2, 12),
+(1, 13),
+(2, 13);
 
 --
 -- 限制导出的表
@@ -137,8 +141,8 @@ INSERT INTO `sta_UserAndGame` (`user_id`, `game_id`) VALUES
 -- 限制表 `sta_Comment`
 --
 ALTER TABLE `sta_Comment`
-  ADD CONSTRAINT `FK_OwnComment` FOREIGN KEY (`user_id`) REFERENCES `sta_user` (`user_id`),
-  ADD CONSTRAINT `FK_HasCommemt` FOREIGN KEY (`game_id`) REFERENCES `sta_Game` (`game_id`);
+  ADD CONSTRAINT `FK_HasCommemt` FOREIGN KEY (`game_id`) REFERENCES `sta_Game` (`game_id`),
+  ADD CONSTRAINT `FK_OwnComment` FOREIGN KEY (`user_id`) REFERENCES `sta_user` (`user_id`);
 
 --
 -- 限制表 `sta_Game`
@@ -156,8 +160,8 @@ ALTER TABLE `sta_UnderVerifiedGame`
 -- 限制表 `sta_UserAndGame`
 --
 ALTER TABLE `sta_UserAndGame`
-  ADD CONSTRAINT `FK_sta_UserOwnGame` FOREIGN KEY (`user_id`) REFERENCES `sta_user` (`user_id`),
-  ADD CONSTRAINT `FK_sta_GameOwnUser` FOREIGN KEY (`game_id`) REFERENCES `sta_Game` (`game_id`);
+  ADD CONSTRAINT `FK_sta_GameOwnUser` FOREIGN KEY (`game_id`) REFERENCES `sta_Game` (`game_id`),
+  ADD CONSTRAINT `FK_sta_UserOwnGame` FOREIGN KEY (`user_id`) REFERENCES `sta_user` (`user_id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
