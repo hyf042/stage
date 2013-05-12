@@ -39,6 +39,8 @@ class RepoController extends Controller
 		);
 	}
 
+	public function getActionParams() { return array_merge($_GET, $_POST); }
+
 	/**
 	 * Lists all models.
 	 */

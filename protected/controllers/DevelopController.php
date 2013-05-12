@@ -45,6 +45,8 @@ class DevelopController extends Controller
 		);
 	}
 
+	public function getActionParams() { return array_merge($_GET, $_POST); }
+
 	public function actionView($id)
 	{
 		$this->redirect(array('game/view','id'=>$id));

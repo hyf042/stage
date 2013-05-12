@@ -15,6 +15,7 @@ class UserController extends Controller
 			)
 		);
 	}
+
 	/**
 	 * @return array action filters
 	 */
@@ -43,6 +44,8 @@ class UserController extends Controller
 			),
 		);
 	}
+
+	public function getActionParams() { return array_merge($_GET, $_POST); }
 
 	/**
 	 * Displays the login page

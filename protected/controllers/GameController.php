@@ -35,6 +35,8 @@ class GameController extends Controller
 		);
 	}
 
+	public function getActionParams() { return array_merge($_GET, $_POST); }
+
 	/**
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
