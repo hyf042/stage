@@ -3373,3 +3373,11 @@ Stack trace:
 REQUEST_URI=/stage/image/default_thumb.jpg
 HTTP_REFERER=http://localhost/stage/shop/index
 ---
+2013/05/21 18:54:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "stage/images/bakerygirl.jpg".' in E:\Web\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\Web\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('stage/images/ba...')
+#1 E:\Web\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 E:\Web\stage\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/stage//stage/images/bakerygirl.jpg
+---
