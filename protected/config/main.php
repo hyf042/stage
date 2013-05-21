@@ -70,7 +70,7 @@ return array(
 			'connectionString' => 'mysql:host=localhost;dbname=stage',
 			'emulatePrepare' => true,
 			'username' => 'root',
-			'password' => 'hyfj4cexsd',
+			'password' => '',
 			'charset' => 'utf8',
 			'tablePrefix' => 'sta_',
 		),
