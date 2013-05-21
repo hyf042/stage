@@ -13,6 +13,9 @@
  * @property string $tags
  * @property string $summary
  * @property string $description
+ * @property string $thumb
+ * @property integer $create_time
+ * @property integer $update_time
  * @property string $params
  *
  * The followings are the available model relations:
@@ -61,6 +64,7 @@ class Game extends CActiveRecord
 			array('deploy_url, tags', 'length', 'max'=>256),
 			array('summary, params', 'length', 'max'=>1024),
 			array('description', 'length', 'max'=>4096),
+			array('thumb', 'length', 'max'=>128),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('game_id, user_id, name, alias, price, deploy_url, tags, summary, description, params', 'safe', 'on'=>'search'),
@@ -96,6 +100,9 @@ class Game extends CActiveRecord
 			'tags' => 'Tags',
 			'summary' => 'Summary',
 			'description' => 'Description',
+			'thumb' => 'Thumb',
+			'create_time' => 'Create Time',
+			'update_time' => 'Update Time',
 			'params' => 'Params',
 		);
 	}
@@ -129,11 +136,22 @@ class Game extends CActiveRecord
 
 	public function beforeSave()
 	{
-		if ($this->price == null)
-			$this->price = 0;
-		if ($this->alias == null || $this->alias == "")
-			$this->alias = "";
-		return true;
+		if (parent::beforeSave())
+		{
+			if ($this->price == null)
+				$this->price = 0;
+			if ($this->alias == null || $this->alias == "")
+				$this->alias = "";
+			if($this->isNewRecord) {
+				$this->create_time=$this->update_time=time();
+				$this->update_time=$this->create_time;
+			}
+			else
+				$this->update_time=time();
+			return true;
+		}
+		else
+			return false;
 	}
 
 	public function getId()

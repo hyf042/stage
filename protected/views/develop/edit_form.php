@@ -44,9 +44,15 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'description'); ?>
-		<?php echo CHtml::activeTextArea($model,'description',array('rows'=>10, 'cols'=>70)); ?>
+		<?php echo CHtml::activeTextArea($model,'description',array('rows'=>10, 'cols'=>100)) ?>
 		<p class="hint">You may use <a target="_blank" href="http://daringfireball.net/projects/markdown/syntax">Markdown syntax</a>.</p>
 		<?php echo $form->error($model,'description'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'thumb'); ?>
+		<?php echo $form->textField($model,'thumb',array('size'=>60,'maxlength'=>128)); ?>
+		<?php echo $form->error($model,'thumb'); ?>
 	</div>
 
 	<div class="row">

@@ -52,7 +52,7 @@ class SiteController extends Controller
 	/**
 	 * Displays the contact page
 	 */
-	public function actionContact()
+	public function actionAbout()
 	{
 		$model=new ContactForm;
 		if(isset($_POST['ContactForm']))
@@ -72,11 +72,6 @@ class SiteController extends Controller
 				$this->refresh();
 			}
 		}
-		$this->render('contact',array('model'=>$model));
-	}
-
-	public function japiTest()
-	{
-		return array('abc'=>"123");
+		$this->render('about',array('model'=>$model));
 	}
 }

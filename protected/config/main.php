@@ -67,10 +67,10 @@ return array(
 		// uncomment the following to use a MySQL database
 		
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=stage-test',
+			'connectionString' => 'mysql:host=localhost;dbname=stage',
 			'emulatePrepare' => true,
 			'username' => 'root',
-			'password' => '',
+			'password' => 'hyfj4cexsd',
 			'charset' => 'utf8',
 			'tablePrefix' => 'sta_',
 		),

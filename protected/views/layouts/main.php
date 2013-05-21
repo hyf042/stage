@@ -17,6 +17,7 @@ Yii::app()->bootstrap->register();/* @var $this Controller */ ?>
 
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/widget.css" />
 
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
@@ -36,16 +37,26 @@ Yii::app()->bootstrap->register();/* @var $this Controller */ ?>
 				'class'=>'bootstrap.widgets.TbMenu',
 				'items'=>array(
 					array('label'=>'Home', 'url'=>array('/site/index')),
-					array('label'=>'Shop', 'url'=>array('/shop/index'), 'visible'=>!Yii::app()->user->isGuest),
-					array('label'=>'Repo', 'url'=>array('/repo/index'), 'visible'=>!Yii::app()->user->isGuest),
-					array('label'=>'Develop', 'url'=>array('/develop/index'), 'visible'=>!Yii::app()->user->isGuest),
-					array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
-					array('label'=>'Contact', 'url'=>array('/site/contact')),
-					array('label'=>'Login', 'url'=>array('/user/login'), 'visible'=>Yii::app()->user->isGuest),
-					array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/user/logout'), 'visible'=>!Yii::app()->user->isGuest),
-					array('label'=>'Register', 'url'=>array('/user/register'), 'visible'=>Yii::app()->user->isGuest)
+					array('label'=>'Shop', 'url'=>array('/shop/index')),
+					array('label'=>'Repo', 'url'=>array('/repo/index'), 'visible'=>!Yii::app()->user->isGuest)
 				),
 			),
+			array(
+	            'class'=>'bootstrap.widgets.TbMenu',
+	            'htmlOptions'=>array('class'=>'pull-right'),
+	            'items'=>array(
+	                array('label'=>'Login', 'url'=>array('/user/login'), 'visible'=>Yii::app()->user->isGuest),
+					
+					array('label'=>'Register', 'url'=>array('/user/register'), 'visible'=>Yii::app()->user->isGuest),
+					array('label'=>'Account', 'url'=>'#', 'visible'=>!Yii::app()->user->isGuest,
+						'items'=>array(
+							array('label'=>'Develop', 'url'=>array('/develop/index'), 'visible'=>!Yii::app()->user->isGuest),
+							array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/user/logout'))
+	                )),
+					array('label'=>'About', 'url'=>array('/site/about')
+				)
+            ),
+        ),
 		),
 	)); ?> 
 

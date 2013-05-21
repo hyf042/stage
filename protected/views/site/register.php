@@ -2,6 +2,10 @@
 /* @var $this RegisterFormController */
 /* @var $model RegisterForm */
 /* @var $form CActiveForm */
+$this->pageTitle=Yii::app()->name . ' - Register';
+$this->breadcrumbs=array(
+	'Register',
+);
 ?>
 
 <div class="form">

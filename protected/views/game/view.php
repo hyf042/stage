@@ -18,8 +18,27 @@ $this->pageTitle=$model->name;
 	'method'=>'get',
 )); ?>
 <?php
-	if (!User::model()->findByPK(Yii::app()->user->id)->hasOwnedGame($model->game_id))
-		echo CHtml::submitButton('Get it'); 
+	if (!Yii::app()->user->isGuest)
+	{
+		echo '<p/> <div align="center">';
+		$this->beginWidget('bootstrap.widgets.TbHeroUnit');
+		if(!User::model()->findByPK(Yii::app()->user->id)->hasOwnedGame($model->game_id))
+		{
+			$this->widget('bootstrap.widgets.TbButton', array(
+			'buttonType'=>'submit',
+	        'type'=>'primary',
+	        'size'=>'large',
+	        'label'=>'Get it',
+	        ));
+			//echo CHtml::submitButton('Get it');
+		}
+		else
+		{
+			echo 'You already own this game.';
+		}
+		$this->endWidget();
+		echo '</div>'; 
+	}
 ?>
 
 <?php $this->endWidget(); ?>

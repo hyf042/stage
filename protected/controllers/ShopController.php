@@ -14,7 +14,7 @@ class ShopController extends Controller
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
-	public $layout='//layouts/column2';
+	//public $layout='//layouts/column2';
 
 	/**
 	 * @return array action filters
@@ -56,7 +56,11 @@ class ShopController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Game');
+		$dataProvider=new CActiveDataProvider('Game', array(
+			'criteria'=>array(
+		        'order'=>'create_time DESC'
+		    ))
+		);
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));

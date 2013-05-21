@@ -1,0 +1,62 @@
+.game
+{
+	margin: 0 0 20px;
+}
+
+.game .name
+{
+	font-size: 1.5em;
+	border-bottom: 1px solid #C9E0ED;
+}
+
+.game .name a
+{
+	color: #555;
+	text-decoration: none;
+}
+
+.game .summary
+{
+	color: #888;
+	margin: 0 0 5px;
+}
+
+
+.game .description
+{
+}
+
+.game .nav
+{
+	-moz-border-radius:7px;
+	padding: 5px;
+	background: #EFFDFF;
+}
+
+.widget .middle
+{
+	text-align:center;
+	margin:0 auto;	
+}
+
+.shop
+{
+	margin: 0 0 20px;
+}
+
+.shop .name
+{
+	font-size: 1.5em;
+}
+
+.shop .name a
+{
+	color: #555;
+	text-decoration: none;
+}
+
+.shop .summary
+{
+	color: #888;
+	margin: 0 0 5px;
+}
