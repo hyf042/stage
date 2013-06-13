@@ -11,7 +11,7 @@
 	$name = CHtml::encode($data->name);
 	echo "<a href=\"$url\" class=\"thumbnail\" rel=\"tooltip\" data-title=\"$name\">";
 	if ($data->thumb == null || $data->thumb == '')
-		$thumb = Yii::app()->baseUrl . '/images/default_thumb';
+		$thumb = Yii::app()->baseUrl . '/images/default_thumb.gif';
 	else
 		$thumb = $data->thumb;
 	?>
