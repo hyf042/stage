@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: 127.0.0.1
--- 生成日期: 2013 年 05 月 21 日 19:10
+-- 生成日期: 2013 年 06 月 27 日 18:42
 -- 服务器版本: 5.5.27
 -- PHP 版本: 5.4.7
 
@@ -19,6 +19,85 @@ SET time_zone = "+00:00";
 --
 -- 数据库: `stage-test`
 --
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `pre_auth_assignment`
+--
+
+CREATE TABLE IF NOT EXISTS `pre_auth_assignment` (
+  `itemname` varchar(64) NOT NULL,
+  `userid` varchar(64) NOT NULL,
+  `bizrule` text,
+  `data` text,
+  PRIMARY KEY (`itemname`,`userid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- 转存表中的数据 `pre_auth_assignment`
+--
+
+INSERT INTO `pre_auth_assignment` (`itemname`, `userid`, `bizrule`, `data`) VALUES
+('player', '4', NULL, 'N;');
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `pre_auth_item`
+--
+
+CREATE TABLE IF NOT EXISTS `pre_auth_item` (
+  `name` varchar(64) NOT NULL,
+  `type` int(11) NOT NULL,
+  `description` text,
+  `bizrule` text,
+  `data` text,
+  PRIMARY KEY (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- 转存表中的数据 `pre_auth_item`
+--
+
+INSERT INTO `pre_auth_item` (`name`, `type`, `description`, `bizrule`, `data`) VALUES
+('administrator', 2, '', NULL, 'N;'),
+('adminTask', 1, 'admin all', 'return Yii::app()->user->id=="admin";', 'N;'),
+('adminWorks', 0, 'admin operations', NULL, 'N;'),
+('developer', 2, '', NULL, 'N;'),
+('guest', 2, '', NULL, 'N;'),
+('player', 2, '', NULL, 'N;'),
+('playerTask', 1, 'player task', 'return !Yii::app()->user->isGuest;', 'N;'),
+('playerWorks', 0, 'player operations', NULL, 'N;'),
+('publishWorks', 0, 'publish operations', NULL, 'N;'),
+('viewWorks', 0, 'view shop and games', NULL, 'N;');
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `pre_auth_item_child`
+--
+
+CREATE TABLE IF NOT EXISTS `pre_auth_item_child` (
+  `parent` varchar(64) NOT NULL,
+  `child` varchar(64) NOT NULL,
+  PRIMARY KEY (`parent`,`child`),
+  KEY `child` (`child`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- 转存表中的数据 `pre_auth_item_child`
+--
+
+INSERT INTO `pre_auth_item_child` (`parent`, `child`) VALUES
+('administrator', 'adminTask'),
+('adminTask', 'adminWorks'),
+('developer', 'player'),
+('player', 'playerTask'),
+('playerTask', 'playerWorks'),
+('developer', 'publishWorks'),
+('guest', 'viewWorks'),
+('player', 'viewWorks');
 
 -- --------------------------------------------------------
 
@@ -59,7 +138,7 @@ CREATE TABLE IF NOT EXISTS `sta_game` (
   `params` varchar(1024) DEFAULT NULL,
   PRIMARY KEY (`game_id`),
   KEY `FK_developer` (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
 
 --
 -- 转存表中的数据 `sta_game`
@@ -104,7 +183,7 @@ CREATE TABLE IF NOT EXISTS `sta_user` (
   `wallet` double NOT NULL,
   `params` varchar(1024) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- 转存表中的数据 `sta_user`
@@ -113,7 +192,8 @@ CREATE TABLE IF NOT EXISTS `sta_user` (
 INSERT INTO `sta_user` (`user_id`, `username`, `password`, `nickname`, `email`, `wallet`, `params`) VALUES
 (1, 'hyf042', '$1$$kix5B3eua3vczi82BnQMW1', 'hyf042', 'hyf042@gmail.com', 0, NULL),
 (2, 'admin', '$1$$CoERg7ynjYLsj2j4glJ34.', 'admin', 'admin@admin.com', 0, NULL),
-(3, 'alibaba', '$1$$eAxa8n.c5xGIoUHTtBsSF/', 'alibaba', 'alibaba@gm.com', 0, NULL);
+(3, 'alibaba', '$1$$eAxa8n.c5xGIoUHTtBsSF/', 'alibaba', 'alibaba@gm.com', 0, NULL),
+(4, 'gooddaddy', '$1$$aP6ZDsRO9vkjMVaMZ8Ff//', 'gooddaddy', 'ko@dkfj.com', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -139,11 +219,25 @@ INSERT INTO `sta_userandgame` (`user_id`, `game_id`) VALUES
 (1, 13),
 (2, 13),
 (1, 14),
-(2, 14);
+(2, 14),
+(4, 14);
 
 --
 -- 限制导出的表
 --
+
+--
+-- 限制表 `pre_auth_assignment`
+--
+ALTER TABLE `pre_auth_assignment`
+  ADD CONSTRAINT `pre_auth_assignment_ibfk_1` FOREIGN KEY (`itemname`) REFERENCES `pre_auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- 限制表 `pre_auth_item_child`
+--
+ALTER TABLE `pre_auth_item_child`
+  ADD CONSTRAINT `pre_auth_item_child_ibfk_1` FOREIGN KEY (`parent`) REFERENCES `pre_auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `pre_auth_item_child_ibfk_2` FOREIGN KEY (`child`) REFERENCES `pre_auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- 限制表 `sta_comment`

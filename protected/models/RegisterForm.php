@@ -75,8 +75,14 @@ class RegisterForm extends CFormModel
 		$model->email = $this->email;
 		$model->nickname = $this->nickname;
 		$model->wallet = 0.0;
-		if ($model->save())
+		if ($model->save()) {
+
+			// assign player auth
+			$auth=Yii::app()->authManager;
+			$auth->assign('player',$model->id);
+
 			return true;
+		}
 		return false;
 	}
 }

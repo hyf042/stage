@@ -74,6 +74,15 @@ return array(
 			'charset' => 'utf8',
 			'tablePrefix' => 'sta_',
 		),
+
+		'authManager'=>array(
+			'class'=>'CDbAuthManager',//认证类名称
+			'connectionID'=>'db',
+			'defaultRoles'=>array('guest'),//默认角色
+			'itemTable' => 'pre_auth_item',//认证项表名称
+			'itemChildTable' => 'pre_auth_item_child',//认证项父子关系
+			'assignmentTable' => 'pre_auth_assignment',//认证项赋权关系
+		),
 		
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors

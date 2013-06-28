@@ -46,6 +46,13 @@ class RepoController extends Controller
 	 */
 	public function actionIndex()
 	{
+		if(!Yii::app()->user->checkAccess('playerWorks'))
+		{
+			$this->redirect(Yii::app()->createUrl('site/noauth', 
+									array('returnUrl'=>Yii::app()->request->urlReferrer)));
+			return;
+		}
+
 		$games=User::model()->findByPk(Yii::app()->user->id)->own_games;
 		$dataProvider = new CArrayDataProvider($games);
 		$this->render('index',array(

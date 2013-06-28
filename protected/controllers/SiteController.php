@@ -54,6 +54,9 @@ class SiteController extends Controller
 	 */
 	public function actionAbout()
 	{
+		//$this->auth_build();
+		//return;
+
 		$model=new ContactForm;
 		if(isset($_POST['ContactForm']))
 		{
@@ -73,5 +76,49 @@ class SiteController extends Controller
 			}
 		}
 		$this->render('about',array('model'=>$model));
+	}
+
+	public function actionNoauth($returnUrl)
+	{
+		$this->render('alert',array('title'=>'No Authorization',
+								 'message'=>'You have no authorization to do this operation!',
+								 'returnUrl'=>$returnUrl));
+	}
+
+	public function actionReturn($returnUrl)
+	{
+		$this->redirect($returnUrl);
+	}
+
+	public function auth_build()
+	{
+		$auth=Yii::app()->authManager;
+
+		$auth->createOperation('publishWorks','publish operations');
+		$auth->createOperation('viewWorks','view shop and games');
+		$auth->createOperation('playerWorks','player operations');
+		$auth->createOperation('adminWorks','admin operations');
+
+		$bizRule='return Yii::app()->user->id=="admin";';
+		$task=$auth->createTask('adminTask','admin all',$bizRule);
+		$task->addChild('adminWorks');
+
+		$bizRule='return !Yii::app()->user->isGuest;';
+		$task=$auth->createTask('playerTask','player task',$bizRule);
+		$task->addChild('playerWorks');
+
+		$role=$auth->createRole('player');
+		$role->addChild('viewWorks');
+		$role->addChild('playerTask');
+
+		$role=$auth->createRole('developer');
+		$role->addChild('player');
+		$role->addChild('publishWorks');
+
+		$role=$auth->createRole('administrator');
+		$role->addChild('adminTask');
+
+		$role=$auth->createRole('guest');
+		$role->addChild('viewWorks');
 	}
 }

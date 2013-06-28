@@ -58,6 +58,13 @@ class DevelopController extends Controller
 	 */
 	public function actionPublish()
 	{
+		if(!Yii::app()->user->checkAccess('publishWorks'))
+		{
+			$this->redirect(Yii::app()->createUrl('site/noauth', 
+									array('returnUrl'=>Yii::app()->request->urlReferrer)));
+			return;
+		}
+
 		$model=new Game;
 
 		// Uncomment the following line if AJAX validation is needed
@@ -83,6 +90,13 @@ class DevelopController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
+		if(!Yii::app()->user->checkAccess('publishWorks'))
+		{
+			$this->redirect(Yii::app()->createUrl('site/noauth', 
+									array('returnUrl'=>Yii::app()->request->urlReferrer)));
+			return;
+		}
+
 		$model=$this->loadModel($id);
 
 		// Uncomment the following line if AJAX validation is needed
@@ -107,6 +121,13 @@ class DevelopController extends Controller
 	 */
 	public function actionDelete($id)
 	{
+		if(!Yii::app()->user->checkAccess('publishWorks'))
+		{
+			$this->redirect(Yii::app()->createUrl('site/noauth', 
+									array('returnUrl'=>Yii::app()->request->urlReferrer)));
+			return;
+		}
+
 		$this->loadModel($id)->delete();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
@@ -119,6 +140,13 @@ class DevelopController extends Controller
 	 */
 	public function actionIndex()
 	{
+		if(!Yii::app()->user->checkAccess('publishWorks'))
+		{
+			$this->redirect(Yii::app()->createUrl('site/noauth', 
+									array('returnUrl'=>Yii::app()->request->urlReferrer)));
+			return;
+		}
+
 		$userid = Yii::app()->user->id;
 		$dataProvider=new CActiveDataProvider('Game', array(
 		    'criteria'=>array(
@@ -135,6 +163,13 @@ class DevelopController extends Controller
 	 */
 	public function actionAdmin()
 	{
+		if(!Yii::app()->user->checkAccess('publishWorks'))
+		{
+			$this->redirect(Yii::app()->createUrl('site/noauth', 
+									array('returnUrl'=>Yii::app()->request->urlReferrer)));
+			return;
+		}
+		
 		$model=new Game('search');
 		$model->unsetAttributes();  // clear any default values
 

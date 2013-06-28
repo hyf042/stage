@@ -40,7 +40,7 @@ class Game extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return '{{Game}}';
+		return '{{game}}';
 	}
 
 	public function behaviors(){

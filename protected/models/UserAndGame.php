@@ -24,7 +24,7 @@ class UserAndGame extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return '{{UserAndGame}}';
+		return '{{userandgame}}';
 	}
 
 	/**

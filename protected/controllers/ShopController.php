@@ -37,7 +37,7 @@ class ShopController extends Controller
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
 				'actions'=>array('index'),
-				'users'=>array('*'),
+				'users'=>array('@'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('buy', 'api'),
@@ -56,7 +56,14 @@ class ShopController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Game', array(
+		if(!Yii::app()->user->checkAccess('viewWorks'))
+		{
+			$this->redirect(Yii::app()->createUrl('site/noauth', 
+									array('returnUrl'=>Yii::app()->request->urlReferrer)));
+			return;
+		}
+
+	    $dataProvider=new CActiveDataProvider('Game', array(
 			'criteria'=>array(
 		        'order'=>'create_time DESC'
 		    ))
@@ -68,6 +75,13 @@ class ShopController extends Controller
 
 	public function actionBuy($game_id)
 	{
+		if(!Yii::app()->user->checkAccess('playerWorks'))
+		{
+			$this->redirect(Yii::app()->createUrl('site/noauth', 
+									array('returnUrl'=>Yii::app()->request->urlReferrer)));
+			return;
+		}
+
 		$user = User::model()->findByPk(Yii::app()->user->id);
 		if ($user->hasOwnedGame($game_id))
 		{
@@ -85,6 +99,13 @@ class ShopController extends Controller
 
 	public function japiGet_All()
 	{
+		if(!Yii::app()->user->checkAccess('viewWorks'))
+		{
+			$this->redirect(Yii::app()->createUrl('site/noauth', 
+									array('returnUrl'=>Yii::app()->request->urlReferrer)));
+			return;
+		}
+		
 		$games = Game::model()->findAll();
 		$games_info = array();
 		foreach ($games as $game)	

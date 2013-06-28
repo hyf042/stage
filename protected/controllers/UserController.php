@@ -111,8 +111,10 @@ class UserController extends Controller
 	 */
 	public function japiLogin($username, $password)
 	{
-		if (!Yii::app()->user->isGuest)
+		if (!Yii::app()->user->isGuest) {
+			//Yii::app()->user->logout();
 			return array('ret'=>'failed', 'reason'=>'already login');
+		}
 
 		$model=new LoginForm;
 
