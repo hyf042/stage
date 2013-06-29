@@ -25,6 +25,9 @@
  */
 class Game extends CActiveRecord
 {
+	public $gameData;
+	public $thumbData;
+	
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -51,24 +54,54 @@ class Game extends CActiveRecord
 	/**
 	 * @return array validation rules for model attributes.
 	 */
+	
+	public function addComment($comment)
+	{
+
+		$comment->game_id=$this->id;
+		$comment->user_id=Yii::app()->user->id;
+		return $comment->save();
+	}
+
+	/**
+	 * @return array validation rules for model attributes.
+	 */
 	public function rules()
 	{
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name, deploy_url', 'required'),
+			array('name', 'required'),
 			array('user_id', 'numerical', 'integerOnly'=>true),
 			array('price', 'numerical'),
 			//array('deploy_url', 'url'),
 			array('name, alias', 'length', 'max'=>128),
-			array('deploy_url, tags', 'length', 'max'=>256),
+			//array('deploy_url, tags', 'length', 'max'=>256),
 			array('summary, params', 'length', 'max'=>1024),
 			array('description', 'length', 'max'=>4096),
-			array('thumb', 'length', 'max'=>128),
+			//array('thumb', 'length', 'max'=>128),
+            array('gameData', 'file', 'allowEmpty'=>true, 'types'=>'zip'),
+            array('thumbData', 'file', 'allowEmpty'=>true, 'types'=>'jpg, png, gif'),
+
+            array('tags','match','pattern'=>'/^[\w\s,]+$/','message'=>'Tags can only contain word characters.'),
+			array('tags','normalizeTags'),
+
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('game_id, user_id, name, alias, price, deploy_url, tags, summary, description, params', 'safe', 'on'=>'search'),
 		);
+	}
+
+	public function normalizeTags($attributes,$params)
+	{
+		$this->tags=Tag::array2string(array_unique(Tag::string2array($this->tags)));
+	}
+	public function getTagLinks()
+	{
+		$links=array();
+		foreach(Tag::string2array($this->tags) as $tag)
+			$links[]=CHtml::link(CHtml::encode($tag), array('shop/taglist', 'tag'=>$tag));
+		return $links;
 	}
 
 	/**
@@ -80,6 +113,7 @@ class Game extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'comments' => array(self::HAS_MANY, 'Comment', 'game_id'),
+			'commentCount'=>array(self::STAT,'Comment','game_id'),
 			'developer' => array(self::BELONGS_TO, 'User', 'user_id'),
 			'owner_users' => array(self::MANY_MANY, 'User', '{{UserAndGame}}(game_id, user_id)'),
 		);
@@ -152,6 +186,28 @@ class Game extends CActiveRecord
 		}
 		else
 			return false;
+	}
+
+	public function afterSave()
+	{
+		parent::afterSave();
+
+		Tag::model()->updateFrequency($this->_oldTags, $this->tags);
+	}
+
+	private $_oldTags;
+
+	protected function afterFind()
+	{
+		parent::afterFind();
+		$this->_oldTags = $this->tags;
+	}
+
+	protected function afterDelete()
+	{
+		parent::afterDelete();
+		Comment::model()->deleteAll('game_id='.$this->id);
+		Tag::model()->updateFrequency($this->tags, '');
 	}
 
 	public function getId()

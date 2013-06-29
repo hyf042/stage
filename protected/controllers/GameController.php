@@ -47,9 +47,26 @@ class GameController extends Controller
 	 */
 	public function actionView($id)
 	{
+		$game=$this->loadModel($id);
+		$comment=$this->newComment($game);
+
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
+			'comment'=>$comment,
 		));
+	}
+	protected function newComment($game)
+	{
+		$comment=new Comment;
+		if(isset($_POST['Comment']))
+		{
+			$comment->attributes=$_POST['Comment'];
+			if($game->addComment($comment))
+			{
+				$this->refresh();
+			}
+		}
+		return $comment;
 	}
 
 	/*

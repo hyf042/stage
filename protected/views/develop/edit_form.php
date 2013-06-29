@@ -11,7 +11,8 @@
 	'enableClientValidation'=>true,
 	'clientOptions'=>array(
 		'validateOnSubmit'=>true,
-	)
+	),
+	'htmlOptions'=>array('enctype'=>'multipart/form-data', 'class'=>'develop_form')
 )); ?>
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
@@ -30,11 +31,13 @@
 		<?php echo $form->error($model,'alias'); ?>
 	</div>
 
+	<!--
 	<div class="row">
 		<?php echo $form->labelEx($model,'deploy_url'); ?>
 		<?php echo $form->textField($model,'deploy_url',array('size'=>60,'maxlength'=>256)); ?>
 		<?php echo $form->error($model,'deploy_url'); ?>
 	</div>
+	-->
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'summary'); ?>
@@ -50,16 +53,34 @@
 	</div>
 
 	<div class="row">
+		<!--
 		<?php echo $form->labelEx($model,'thumb'); ?>
 		<?php echo $form->textField($model,'thumb',array('size'=>60,'maxlength'=>128)); ?>
 		<?php echo $form->error($model,'thumb'); ?>
+		-->
+		<?php echo $form->labelEx($model,'thumb'); ?>  
+    	<?php echo CHtml::activeFileField($model,'thumbData'); ?>  
+    	<?php echo $form->error($model,'thumbData'); ?>  
 	</div>
+
+<!--
+	<div class="row">  
+        <?php echo $form->labelEx($model,'preview'); ?>  
+        <?php echo '<img src="'.$model->thumb.'" style="width:200px;" />'; ?>  
+    </div>  
+-->
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'tags'); ?>
 		<?php echo $form->textField($model,'tags',array('size'=>60,'maxlength'=>256)); ?>
 		<?php echo $form->error($model,'tags'); ?>
 	</div>
+
+	<div class="row">  
+    	<?php echo $form->labelEx($model,'data'); ?>  
+    	<?php echo CHtml::activeFileField($model,'gameData'); ?>  
+    	<?php echo $form->error($model,'gameData'); ?>  
+	</div>  
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Publish' : 'Save'); ?>

@@ -154,6 +154,10 @@ class UserController extends Controller
 			return array('ret'=>'failed');
 		return array('ret'=>'ok');
 	}
+	public function japiPing()
+	{
+		return array('ret'=>'ok');
+	}
 	/*
 	 * API Region End
 	 */

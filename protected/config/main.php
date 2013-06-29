@@ -78,7 +78,7 @@ return array(
 		'authManager'=>array(
 			'class'=>'CDbAuthManager',//认证类名称
 			'connectionID'=>'db',
-			'defaultRoles'=>array('guest'),//默认角色
+			'defaultRoles'=>array('guest', 'developer'),//默认角色
 			'itemTable' => 'pre_auth_item',//认证项表名称
 			'itemChildTable' => 'pre_auth_item_child',//认证项父子关系
 			'assignmentTable' => 'pre_auth_assignment',//认证项赋权关系
@@ -109,7 +109,8 @@ return array(
 	// using Yii::app()->params['paramName']
 	'params'=>array(
 		// this is used in contact page
-		'adminEmail'=>'webmaster@example.com',
+		'tagCloudCount'=>20,
+		'adminEmail'=>'hyf042@gmail.com',
 	),
 
 

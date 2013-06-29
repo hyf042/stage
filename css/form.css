@@ -34,6 +34,16 @@
  * @license http://www.yiiframework.com/license/
  */
 
+form.develop_form
+{
+}
+
+form.develop_form input,
+form.develop_form textarea,
+{
+	width : 406px;
+}
+
 div.form
 {
 }

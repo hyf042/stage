@@ -40,9 +40,36 @@ $this->pageTitle=$model->name;
 		echo '</div>'; 
 	}
 ?>
-
 <?php $this->endWidget(); ?>
+<div class="comment">
+	<?php if($model->commentCount>=1): ?>
+		<h4 class="title">
+			<?php echo $model->commentCount>1 ? $model->commentCount . ' comments' : 'One comment'; ?>
+		</h4>
 
+		<?php $this->renderPartial('_comments',array(
+			'post'=>$model,
+			'comments'=>$model->comments,
+		)); ?>
+	<?php endif; ?>
+
+	<div class="bottom"/>
+
+	<?php if( !Yii::app()->user->isGuest ): ?>
+		<?php if(Yii::app()->user->hasFlash('commentSubmitted')): ?>
+			<div class="flash-success">
+				<?php echo Yii::app()->user->getFlash('commentSubmitted'); ?>
+			</div>
+		<?php else: ?>
+			<?php $this->renderPartial('/comment/_form',array(
+				'model'=>$comment,
+			)); ?>
+		<?php endif; ?>
+	<?php endif; ?>
+
+</div>
+
+<!--
 <div id="disqus_thread"></div>
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
@@ -57,3 +84,4 @@ $this->pageTitle=$model->name;
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+-->

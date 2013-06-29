@@ -5,18 +5,16 @@
 		<?php echo $content; ?>
 	</div><!-- content -->
 </div>
-<div class="span-5 last">
+<div class="span-8 last">
 	<div id="sidebar">
+	<div class="well" style="padding: 8px">
 	<?php
-		$this->beginWidget('zii.widgets.CPortlet', array(
-			'title'=>'Operations',
+		$this->widget('bootstrap.widgets.TbMenu', array(
+		    'type'=>'list',
+		    'items'=>$this->menu,
 		));
-		$this->widget('zii.widgets.CMenu', array(
-			'items'=>$this->menu,
-			'htmlOptions'=>array('class'=>'operations'),
-		));
-		$this->endWidget();
 	?>
+	</div>
 	</div><!-- sidebar -->
 </div>
 <?php $this->endContent(); ?>

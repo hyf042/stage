@@ -90,6 +90,11 @@ class SiteController extends Controller
 		$this->redirect($returnUrl);
 	}
 
+	public function japiPing()
+	{
+		return array('ret'=>'ok');
+	}
+
 	public function auth_build()
 	{
 		$auth=Yii::app()->authManager;

@@ -8,8 +8,10 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Game', 'url'=>array('index')),
-	array('label'=>'Manage Game', 'url'=>array('admin')),
+        array('label'=>'Operations'),
+        array('label'=>'View', 'icon'=>'home', 'url'=>array('index')),
+        array('label'=>'Publish', 'icon'=>'book', 'url'=>'#', 'active'=>true),
+        array('label'=>'Manage', 'icon'=>'pencil', 'url'=>array('admin')),
 );
 ?>
 

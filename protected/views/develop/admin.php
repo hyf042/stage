@@ -8,8 +8,10 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Game', 'url'=>array('index')),
-	array('label'=>'Publish Game', 'url'=>array('Publish')),
+	array('label'=>'Operations'),
+	array('label'=>'View', 'icon'=>'home', 'url'=>array('index')),
+	array('label'=>'Publish', 'icon'=>'book', 'url'=>array('Publish')),
+    array('label'=>'Manage', 'icon'=>'pencil', 'url'=>'#', 'active'=>true),
 );
 
 Yii::app()->clientScript->registerScript('search', "

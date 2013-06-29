@@ -36,8 +36,8 @@ class ShopController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index'),
-				'users'=>array('@'),
+				'actions'=>array('index', 'taglist'),
+				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('buy', 'api'),
@@ -68,6 +68,21 @@ class ShopController extends Controller
 		        'order'=>'create_time DESC'
 		    ))
 		);
+		$this->render('index',array(
+			'dataProvider'=>$dataProvider,
+		));
+	}
+	public function actionTaglist()
+	{
+		$criteria=new CDbCriteria(array(
+			'with'=>'commentCount',)
+		);
+		if (isset($_GET['tag']))
+			$criteria->addSearchCondition('tags',$_GET['tag']);
+			$criteria->order = 'create_time DESC';
+			$dataProvider=new CActiveDataProvider('Game',array(
+			'criteria'=>$criteria)
+			);
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));

@@ -23,4 +23,8 @@
 			$this->endWidget();
 		?>
 	</div>
+	<div class="alert in alert-block fade alert-info">
+		<b>Tags:</b>
+		<?php echo implode(', ', $data->TagLinks); ?>
+	</div>
 </div>

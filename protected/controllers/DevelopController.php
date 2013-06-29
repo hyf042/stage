@@ -52,6 +52,53 @@ class DevelopController extends Controller
 		$this->redirect(array('game/view','id'=>$id));
 	}
 
+	function mkdirs($dir)  
+	{  
+		if(!is_dir($dir))  
+		{  
+			if(!$this->mkdirs(dirname($dir))){  
+				return false;  
+			}  
+			if(!mkdir($dir)){  
+				return false;  
+			}  
+		}  
+		return true;  
+	}  
+
+	private function saveThumbAndData($model)
+	{
+		$data = CUploadedFile::getInstance($model, 'gameData');  
+		$gameBasePath = Yii::app()->basePath.'/../uploads/games/'.$model->id;
+		$gameBaseUrl = Yii::app()->baseUrl.'/uploads/games/'.$model->id;
+
+		if ( is_object($data) && get_class($data) === 'CUploadedFile' ){  
+		    $model->deploy_url = $gameBaseUrl.'/data.zip';  
+		} 
+		$thumb = CUploadedFile::getInstance($model, 'thumbData');  
+
+		if ( is_object($thumb) && get_class($thumb) === 'CUploadedFile' ){  
+		    $model->thumb = $gameBaseUrl.'/thumb.'.$thumb->getExtensionName();  
+		} 
+
+		if($model->save()) {
+			if (!file_exists($gameBasePath))
+				$this->mkdirs($gameBasePath);
+			if(is_object($data) && get_class($data) === 'CUploadedFile'){  
+		        $data->saveAs($gameBasePath.'/data.zip');  
+		    }  
+		    if(is_object($thumb) && get_class($thumb) === 'CUploadedFile'){  
+		        $thumb->saveAs($gameBasePath.'/thumb.'.$thumb->getExtensionName());  
+		    } 
+
+			$this->redirect(array('game/view','id'=>$model->game_id));
+
+			return true;
+		}
+
+		return false;
+	}
+
 	/**
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
@@ -74,8 +121,8 @@ class DevelopController extends Controller
 		{
 			$model->attributes=$_POST['Game'];
 			$model->user_id = Yii::app()->user->id;
-			if($model->save())
-				$this->redirect(array('game/view','id'=>$model->game_id));
+
+			$this->saveThumbAndData($model);
 		}
 
 		$this->render('publish',array(
@@ -105,8 +152,8 @@ class DevelopController extends Controller
 		if(isset($_POST['Game']))
 		{
 			$model->attributes=$_POST['Game'];
-			if($model->save())
-				$this->redirect(array('game/view','id'=>$model->game_id));
+
+			$this->saveThumbAndData($model);
 		}
 
 		$this->render('update',array(

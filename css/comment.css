@@ -1,0 +1,48 @@
+.comment
+{
+	margin-bottom: 5px;
+}
+
+.comment .title
+{
+	border-bottom: 1px solid #C9E0ED;
+}
+
+.comment .bottom
+{
+	margin-top: 10px;
+}
+
+input#msgbox
+{
+	color:#aaa;
+}
+
+.comment .submit
+{
+	margin-top: -5px;
+	margin-left: 5px;
+}
+
+.comment .slide
+{
+	
+}
+
+.comment .slide .name
+{
+	color: #777777;
+	font-family: 'Helvetica Neue', arial, sans-serif;
+	font-size: 15px;
+	font-style: normal;
+	font-weight: 600;
+	height: auto;
+}
+
+.comment .slide .content
+{
+	font-size: 14px;
+	margin-top: 5px;
+	margin-left: 20px;
+	color: #000000;
+}
